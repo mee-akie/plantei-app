@@ -26,3 +26,18 @@ A aplicação estará rodando no `localhost:8080`.
 
 - Java: _Intellij_
 - Banco de dados (postgresql): _BeeKeeper Studio_
+
+## Rodar no docker
+
+Rodar o comando:
+
+```sh
+make
+```
+
+Caso não tenha o comando `make` rodar os seguites comandos:
+
+```sh
+docker build --tag plantei-backend .
+docker run --rm -it -p 8000:8000 plantei-backend
+```
