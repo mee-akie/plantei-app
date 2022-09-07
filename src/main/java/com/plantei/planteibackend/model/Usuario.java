@@ -17,7 +17,7 @@ public class Usuario {
     @Column
     private String senha;
     @Column
-    private String endereco;
+    private String regiao;
     @Column
     private boolean notificacoes;
     @Column
@@ -36,18 +36,18 @@ public class Usuario {
      * @param email        Email do usuario que sera utilizado no momento do Login no app.
      * @param nome         Nome completo do novo usuario.
      * @param senha        Senha do novo usuario que sera utilizado no momento do Login no app.
-     * @param endereco     Endereco de residencia do usuario.
+     * @param regiao       Regiao da residencia do usuario.
      * @param notificacoes Opcao de ativacao/desativacao das notificacoes do app.
      * @param objetivo     Objetivo principal de uso do app pelo usuario.
      * @param area         Tamanho do local que o usuario tem disponivel para suas plantacoes.
      * @param iluminacao   Iluminacao do local disponivel para o usuario cultivar suas plantacoes.
      */
-    public Usuario(Long id, @NotNull String email, @NotNull String nome, @NotNull String senha, @NotNull String endereco, @NotNull boolean notificacoes, @NotNull String objetivo, @NotNull String area, @NotNull Long iluminacao) {
+    public Usuario(Long id, @NotNull String email, @NotNull String nome, @NotNull String senha, @NotNull String regiao, @NotNull boolean notificacoes, @NotNull String objetivo, @NotNull String area, @NotNull Long iluminacao) {
         this.id = id;
         this.email = email;
         this.nome = nome;
         this.senha = senha;
-        this.endereco = endereco;
+        this.regiao = regiao;
         this.notificacoes = notificacoes;
         this.objetivo = objetivo;
         this.area = area;
@@ -70,8 +70,8 @@ public class Usuario {
         return senha;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getRegiao() {
+        return regiao;
     }
 
     public boolean getNotificacoes() {
@@ -106,8 +106,8 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setRegiao(String regiao) {
+        this.regiao = regiao;
     }
 
     public void setNotificacoes(boolean notificacoes) {
