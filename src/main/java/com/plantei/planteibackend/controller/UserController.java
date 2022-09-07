@@ -33,7 +33,7 @@ public class UserController {
      * <p>Retorna os dados de um usuario com base no ID fornecido na requisicao.</p>
      * Path: /api/usuario/{id}
      *
-     * @param userId ID do usuario buscado.
+     * @param id ID do usuario buscado.
      * @return Os dados de um usuario (JSON).
      * @throws ResourceNotFoundException
      */
@@ -65,7 +65,6 @@ public class UserController {
      *
      * @param id           Id que identifica o usuario no banco de dados.
      * @param dadosUsuario JSON com os dados do usuario que devem ser alterados.
-     * @return
      * @throws ResourceNotFoundException
      */
     @PutMapping(path = "/alterarDados/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -84,5 +83,17 @@ public class UserController {
         repositorioUsuario.save(usuarioAlterado);
 
         return ResponseEntity.ok(usuarioAlterado);
+    }
+
+    /**
+     * Remove um usuario cadastrado atraves de seu ID fornecido no path da requisicao.
+     *
+     * @param id ID do usuario que se quer remove.
+     */
+    @DeleteMapping("/remover/{id}")
+    public ResponseEntity<Long> deleteUserById(@PathVariable Long id) {
+        repositorioUsuario.deleteById(id);
+
+        return ResponseEntity.ok(id);
     }
 }
