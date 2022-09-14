@@ -16,17 +16,12 @@ public class WebSecurityConfig {
 
     /**
      * Esse Bean define quais URLs devem ter autenticacao ou nao.
-     * <p>
-     * URLs que precisam ser autenticadas: "/", "/home".
-     * <p>
-     * URLs que NAO precisam ser autenticadas: as demais.
+     * OBS: temporiariamente todas as URLs nao precisam de autenticacao.
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((requests) -> requests
-                        .antMatchers("/", "/home").permitAll()
-                        .anyRequest().authenticated()
+        http.csrf().disable()
+                .authorizeHttpRequests((requests) -> requests.regexMatchers("/*").permitAll()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
