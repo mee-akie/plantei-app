@@ -6,21 +6,40 @@ O _Plantei_ terá como objetivo, alinhado com as ODS 3 e 12 da ONU, ensinar o us
 seu contexto, ao passo que conscientiza sobre educação alimentar, ensinando receitas fáceis e nutritivas a serem feitas
 utilizando suas plantações. Dessa forma, o aplicativo incentiva o usuário a ter uma alimentação nutritiva e saudável .
 
-## Build
+## Build da aplicação
 
-(será automatizado em breve)
+### 1. Criar o banco de dados no Postgresql
 
-### => Dependencias do projeto
+- Requisitos: instalar o **Postgresql**.
 
-`mvn clean install`
+**1.1. Usuarios Linux**
 
-### => Aplicação
+- Rode o script `configDBLinuxUsers`
 
-`javac PlanteiBackendApplication.java`
+**1.2. Usuarios Windows**
 
-`java PlanteiBackendApplication`
+- Abra o shell script do Postgresql (psql)
+- Execute em sequencia:
+    - `CREATE USER planteiAdmin WITH ENCRYPTED PASSWORD 'planteiAdmin';`
+    - `CREATE DATABASE plantei WITH OWNER = planteiAdmin ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;`
+    - `GRANT ALL PRIVILEGES ON DATABASE plantei TO planteiAdmin;`
 
-A aplicação estará rodando no `localhost:8080`.
+### 2. Dependencias do projeto
+
+- Requisitos: instalar o [Maven](https://maven.apache.org/download.cgi).
+
+- Rode o comando `mvn clean install` em seu terminal dentro do diretório do projeto. Ele irá executar o
+  arquivo `pom.xml`.
+
+### 3. Subir a aplicação localmente
+
+Executar os seguintes comandos em sequencia:
+
+- `javac PlanteiBackendApplication.java`
+
+- `java PlanteiBackendApplication`
+
+A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/).
 
 ## Ferramentas de desenvolvimento
 
