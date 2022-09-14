@@ -22,5 +22,3 @@ psql postgres -c "create table Usuario (
         area varchar(2) not null,
         iluminacao varchar(3) not null
 );"
-
-
