@@ -1,15 +1,17 @@
 version: '3'
 services:
   database:
+    hostname: database
+    container_name: plantei-database
     build:
       context: .
       dockerfile: ./docker/Dockerfile_postgres
     restart: always
-    environment:
-      POSTGRES_DB: plantei
-      POSTGRES_USER: planteiAdmin
-      POSTGRES_PASSWORD: planteiAdmin
+    env_file:
+      - ./docker/db_credentials.env
   plantei:
+    hostname: plantei
+    container_name: plantei-backend
     build:
       context: .
       dockerfile: ./docker/Dockerfile_plantei
