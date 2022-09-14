@@ -1,0 +1,17 @@
+version: '3'
+services:
+  database:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: plantei
+      POSTGRES_USER: planteiAdmin
+      POSTGRES_PASSWORD: planteiAdmin
+  plantei:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile_plantei
+    ports:
+      - 8080:8080
