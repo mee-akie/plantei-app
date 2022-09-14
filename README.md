@@ -18,7 +18,7 @@ utilizando suas plantações. Dessa forma, o aplicativo incentiva o usuário a t
 
 **1.2. Usuarios Windows**
 
-- Abra o shell script do Postgresql (psql)
+- Abra o shell do Postgresql (psql)
 - Execute em sequencia:
     - `CREATE USER planteiAdmin WITH ENCRYPTED PASSWORD 'planteiAdmin';`
     - `CREATE DATABASE plantei WITH OWNER = planteiAdmin ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;`
