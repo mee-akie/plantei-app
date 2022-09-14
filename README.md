@@ -23,6 +23,9 @@ utilizando suas plantações. Dessa forma, o aplicativo incentiva o usuário a t
     - `CREATE USER planteiAdmin WITH ENCRYPTED PASSWORD 'planteiAdmin';`
     - `CREATE DATABASE plantei WITH OWNER = planteiAdmin ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;`
     - `GRANT ALL PRIVILEGES ON DATABASE plantei TO planteiAdmin;`
+    
+  ![image](https://user-images.githubusercontent.com/67126558/190192112-0a13c2c3-1277-49d5-893c-f8a32ec7ac8e.png)
+
 
 ### 2. Dependencias do projeto
 
