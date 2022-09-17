@@ -1,6 +1,7 @@
 version: '3'
 services:
   database:
+    image: plantei-database
     hostname: database
     container_name: plantei-database
     build:
@@ -10,6 +11,7 @@ services:
     env_file:
       - ./docker/db_credentials.env
   plantei:
+    image: plantei-backend
     hostname: plantei
     container_name: plantei-backend
     build:
@@ -17,3 +19,5 @@ services:
       dockerfile: ./docker/Dockerfile_plantei
     ports:
       - 8080:8080
+    depends_on:
+      - database
