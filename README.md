@@ -46,8 +46,9 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
 
 ## Ferramentas de desenvolvimento
 
-- Java: _Intellij_
-- Banco de dados (postgresql): _BeeKeeper Studio_
+- Java: [Intellij](https://www.jetbrains.com/pt-br/idea/)
+- Banco de dados (postgresql): [BeeKeeper Studio](https://www.beekeeperstudio.io/)
+- Testar requisições: [Postman](https://www.postman.com/)
 
 ## End-points
 
