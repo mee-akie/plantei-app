@@ -59,7 +59,3 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
 - [POST] `/api/usuario/add` => ira adicionar um usuario novo, cujos dados sao enviados no body da requisicao.
 - [PUT] `/api/usuario/alterarDados/{id}` => altera os dados de um usuario, cujo ID é aquele fornecido no path da requisicao.
 - [DELETE] `/api/usuario/remover/{id}` => remove do banco o usuario cujo ID é fornecido no path da requisição.
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
