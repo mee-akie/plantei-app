@@ -1,6 +1,6 @@
 # Plantei
 
-## Descrição
+## Descrição do projeto
 
 O _Plantei_ terá como objetivo, alinhado com as ODS 3 e 12 da ONU, ensinar o usuário a criar sua própria horta dentro de
 seu contexto, ao passo que conscientiza sobre educação alimentar, ensinando receitas fáceis e nutritivas a serem feitas
@@ -46,5 +46,16 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
 
 ## Ferramentas de desenvolvimento
 
-- Java: _Intellij_
-- Banco de dados (postgresql): _BeeKeeper Studio_
+- Java: [Intellij](https://www.jetbrains.com/pt-br/idea/)
+- Banco de dados (postgresql): [BeeKeeper Studio](https://www.beekeeperstudio.io/)
+- Testar requisições: [Postman](https://www.postman.com/)
+
+## End-points
+
+### Dados do usuário
+
+- [GET] `/api/usuario/listar` => ira fornecer uma lista (JSON) contendo os dados de todos os usuarios existentes no banco de dados.
+- [GET] `/api/usuario/{id}` => ira fornecer os dados (JSON) do usuario com o ID fornecido no path da requisicao.
+- [POST] `/api/usuario/add` => ira adicionar um usuario novo, cujos dados sao enviados no body da requisicao.
+- [PUT] `/api/usuario/alterarDados/{id}` => altera os dados de um usuario, cujo ID é aquele fornecido no path da requisicao.
+- [DELETE] `/api/usuario/remover/{id}` => remove do banco o usuario cujo ID é fornecido no path da requisição.
