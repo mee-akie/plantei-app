@@ -54,8 +54,21 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
 
 ### Dados do usuário
 
-- [GET] `/api/usuario/listar` => ira fornecer uma lista (JSON) contendo os dados de todos os usuarios existentes no banco de dados.
+- [GET] `/api/usuario/listar` => ira fornecer uma lista (JSON) contendo os dados de todos os usuarios existentes no
+  banco de dados.
 - [GET] `/api/usuario/{id}` => ira fornecer os dados (JSON) do usuario com o ID fornecido no path da requisicao.
 - [POST] `/api/usuario/add` => ira adicionar um usuario novo, cujos dados sao enviados no body da requisicao.
-- [PUT] `/api/usuario/alterarDados/{id}` => altera os dados de um usuario, cujo ID é aquele fornecido no path da requisicao.
+- [PUT] `/api/usuario/alterarDados/{id}` => altera os dados de um usuario, cujo ID é aquele fornecido no path da
+  requisicao.
 - [DELETE] `/api/usuario/remover/{id}` => remove do banco o usuario cujo ID é fornecido no path da requisição.
+
+### Dados da planta
+
+- [GET] `/api/planta/listar` => ira fornecer uma lista (JSON) contendo os dados de todas as plantas existentes no banco
+  de dados.
+- [GET] `/api/planta/{id}` => ira fornecer os dados (JSON) da planta com o ID fornecido no path da requisicao.
+- [POST] `/api/planta/add` => ira adicionar uma planta nova, cujos dados sao enviados no body da requisicao.
+- [PUT] `/api/planta/alterarDados/{id}` => altera os dados de uma planta, cujo ID é aquele fornecido no path da
+  requisicao.
+- [DELETE] `/api/planta/remover/{id}` => remove do banco a planta cujo ID é fornecido no path da requisição.
+
