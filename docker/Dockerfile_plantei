@@ -1,6 +1,0 @@
-FROM maven:latest
-WORKDIR /usr/src/plantei
-COPY . /usr/src/plantei
-RUN sed -i '2s/\/\/localhost\:5432/\/\/database\:5432/' src/main/resources/application.properties
-RUN mvn clean install -DskipTests
-ENTRYPOINT java -jar target/plantei-backend-0.0.1-SNAPSHOT.jar

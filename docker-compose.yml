@@ -1,22 +1,22 @@
 version: '3'
 services:
   database:
-    image: plantei-database
+    image: plantei-database:1.0
     hostname: database
     container_name: plantei-database
     build:
       context: .
-      dockerfile: ./docker/Dockerfile_postgres
+      dockerfile: ./docker/Dockerfile.postgres
     restart: always
     env_file:
       - ./docker/db_credentials.env
   plantei:
-    image: plantei-backend
+    image: plantei-backend:1.0
     hostname: plantei
     container_name: plantei-backend
     build:
       context: .
-      dockerfile: ./docker/Dockerfile_plantei
+      dockerfile: ./docker/Dockerfile.plantei
     ports:
       - 8080:8080
     depends_on:
