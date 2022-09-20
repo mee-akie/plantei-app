@@ -16,5 +16,3 @@ RUN ["useradd", "-r", "plantei"]
 USER plantei
 COPY --from=builder /plantei/target/plantei-backend-0.0.1-SNAPSHOT.jar .
 ENTRYPOINT ["java", "-jar", "plantei-backend-0.0.1-SNAPSHOT.jar"]
-
-

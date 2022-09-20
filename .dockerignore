@@ -2,4 +2,4 @@ target/
 build/
 Makefile
 README.md
-docker*
+docker-compose.yml
