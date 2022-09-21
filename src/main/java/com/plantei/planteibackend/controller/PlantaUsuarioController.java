@@ -64,8 +64,8 @@ public class PlantaUsuarioController {
      * seus dados (JSON) de alteracao sao dados no body da requisicao.</p>
      * Path: api/plantaUsuario/alterarDados/{id}
      *
-     * @param id          ID da planta que se quer atualizar seus dados.
-     * @param dadosPlanta Novos dados da planta.
+     * @param id                 ID da planta que se quer atualizar seus dados.
+     * @param dadosPlantaUsuario Novos dados da planta.
      * @throws ResourceNotFoundException
      */
     @PutMapping(path = "/alterarDados/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
