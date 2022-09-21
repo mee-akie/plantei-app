@@ -50,7 +50,7 @@ public class UserController {
      * Path: /api/usuario/add
      *
      * @param usuario JSON com os dados do novo usuario.
-     * @see Usuario#Usuario(Long, String, String, String, String, boolean, String, String, Long)
+     * @see Usuario#Usuario(String, String, String, String, String, Long)
      */
     @PostMapping(path = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Usuario> addUser(@RequestBody Usuario usuario) {
@@ -74,9 +74,8 @@ public class UserController {
 
         usuarioAlterado.setNome(dadosUsuario.getNome());
         usuarioAlterado.setEmail(dadosUsuario.getEmail());
-        usuarioAlterado.setRegiao(dadosUsuario.getRegiao());
+        usuarioAlterado.setEndereco(dadosUsuario.getEndereco());
         usuarioAlterado.setNotificacoes(dadosUsuario.getNotificacoes());
-        usuarioAlterado.setObjetivo(dadosUsuario.getObjetivo());
         usuarioAlterado.setArea(dadosUsuario.getArea());
         usuarioAlterado.setIluminacao(dadosUsuario.getIluminacao());
 
