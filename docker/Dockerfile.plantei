@@ -10,9 +10,7 @@ COPY src/ src
 RUN sed -i '2s/\/\/localhost\:5432/\/\/database\:5432/' src/main/resources/application.properties
 RUN ["mvn", "-T", "4", "clean", "install", "-DskipTests"]
 
-FROM ibmjava:8-jre
+FROM gcr.io/distroless/java11-debian11
 WORKDIR /plantei
-RUN ["useradd", "-rs", "/bin/bash", "plantei"]
-USER plantei
 COPY --from=builder /plantei/target/plantei-backend-0.0.1-SNAPSHOT.jar .
-ENTRYPOINT ["java", "-jar", "plantei-backend-0.0.1-SNAPSHOT.jar"]
+CMD ["plantei-backend-0.0.1-SNAPSHOT.jar"]
