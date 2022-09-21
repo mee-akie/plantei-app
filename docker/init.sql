@@ -11,10 +11,10 @@ GRANT ALL PRIVILEGES ON DATABASE plantei TO planteiAdmin;
 create table Usuario(
 	ID_usuario serial primary key,
 	nome varchar(50) not null,
-	email varchar(30) not null,
+	email varchar(30) unique not null,
 	senha varchar(20) not null, 
 	endereco varchar(60),
-	notificacoes char(1) check(notificacoes in ('S', 'N')),
+	notificacoes boolean,
 	area varchar(7) check(area in ('PEQUENO', 'MEDIO', 'GRANDE', 'NULO')),
 	iluminacao varchar(4) check(iluminacao in ('1', '2', '3', '4', '5', 'NULO'))
 );
@@ -88,8 +88,8 @@ select * from lista_favoritos;
 select * from Descricao_planta;
 select * from Comida;
 
-insert into usuario (nome, email, senha, endereco, notificacoes, area, iluminacao) values('Abigail', 'abigail@gg.com', '123', 'rua augusta do faro', 'S', 'PEQUENO', '5');
-insert into usuario (nome, email, senha, endereco, notificacoes, area, iluminacao) values('Robert', 'roro@gg.com', '123abc', 'rua monte cristo', 'N', 'MEDIO', '1');
+insert into usuario (nome, email, senha, endereco, notificacoes, area, iluminacao) values('Abigail', 'abigail@gg.com', '123', 'rua augusta do faro', 'true', 'PEQUENO', '5');
+insert into usuario (nome, email, senha, endereco, notificacoes, area, iluminacao) values('Robert', 'roro@gg.com', '123abc', 'rua monte cristo', 'false', 'MEDIO', '1');
 
 insert into Planta (nome) values ('carnivora');
 insert into Planta (nome) values ('gira-sol');
