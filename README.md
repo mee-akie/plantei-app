@@ -6,6 +6,27 @@ O _Plantei_ terá como objetivo, alinhado com as ODS 3 e 12 da ONU, ensinar o us
 seu contexto, ao passo que conscientiza sobre educação alimentar, ensinando receitas fáceis e nutritivas a serem feitas
 utilizando suas plantações. Dessa forma, o aplicativo incentiva o usuário a ter uma alimentação nutritiva e saudável .
 
+## Docker
+
+### Requisitos
+
+- docker
+- docker-compose
+
+### Rodar
+
+Subir a aplicação:
+
+```sh
+docker-compose up -d
+```
+
+Derrubar a aplicação:
+
+```sh
+docker-compose down
+```
+
 ## Build da aplicação
 
 ### 1. Criar o banco de dados no Postgresql
