@@ -73,7 +73,6 @@ public class PlantaController {
                 .orElseThrow(() -> new ResourceNotFoundException("Planta com id '" + id + "' nao foi encontrado"));
 
         plantaAlterada.setNome(dadosPlanta.getNome());
-        plantaAlterada.setIdDescricaoPlanta(dadosPlanta.getIdDescricaoPlanta());
 
         repositorioPlanta.save(plantaAlterada);
 

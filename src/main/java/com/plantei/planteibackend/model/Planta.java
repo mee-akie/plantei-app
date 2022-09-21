@@ -6,18 +6,12 @@ import javax.persistence.*;
 public class Planta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_planta")
     private Long id;
-    @Column
+    @Column(nullable = false)
     private String nome;
-    @Column
-    private Long idDescricaoPlanta;
 
     public Planta() {
-    }
-
-    public Planta(String nome, Long idDescricaoPlanta) {
-        this.nome = nome;
-        this.idDescricaoPlanta = idDescricaoPlanta;
     }
 
     public Long getId() {
@@ -28,19 +22,7 @@ public class Planta {
         return nome;
     }
 
-    public Long getIdDescricaoPlanta() {
-        return idDescricaoPlanta;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setIdDescricaoPlanta(Long idDescricaoPlanta) {
-        this.idDescricaoPlanta = idDescricaoPlanta;
     }
 }

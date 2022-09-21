@@ -1,7 +1,5 @@
 package com.plantei.planteibackend.model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -9,49 +7,24 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_usuario")
     private Long id;
-    @Column
+    @Column(nullable = false, unique = true)
     private String email;
-    @Column
+    @Column(nullable = false)
     private String nome;
-    @Column
+    @Column(nullable = false)
     private String senha;
-    @Column
-    private String regiao;
-    @Column
+    @Column(nullable = true)
+    private String endereco;
+    @Column(nullable = false)
     private boolean notificacoes;
-    @Column
-    private String objetivo;
-    @Column
+    @Column(nullable = true)
     private String area;
-    @Column
+    @Column(nullable = true)
     private Long iluminacao;
 
     public Usuario() {
-    }
-
-    /**
-     * Construtor utilizado para adicionar um novo usuario no banco de dados.
-     *
-     * @param email        Email do usuario que sera utilizado no momento do Login no app.
-     * @param nome         Nome completo do novo usuario.
-     * @param senha        Senha do novo usuario que sera utilizado no momento do Login no app.
-     * @param regiao       Regiao da residencia do usuario.
-     * @param notificacoes Opcao de ativacao/desativacao das notificacoes do app.
-     * @param objetivo     Objetivo principal de uso do app pelo usuario.
-     * @param area         Tamanho do local que o usuario tem disponivel para suas plantacoes.
-     * @param iluminacao   Iluminacao do local disponivel para o usuario cultivar suas plantacoes.
-     */
-    public Usuario(Long id, @NotNull String email, @NotNull String nome, @NotNull String senha, @NotNull String regiao, @NotNull boolean notificacoes, @NotNull String objetivo, @NotNull String area, @NotNull Long iluminacao) {
-        this.id = id;
-        this.email = email;
-        this.nome = nome;
-        this.senha = senha;
-        this.regiao = regiao;
-        this.notificacoes = notificacoes;
-        this.objetivo = objetivo;
-        this.area = area;
-        this.iluminacao = iluminacao;
     }
 
     public Long getId() {
@@ -70,16 +43,12 @@ public class Usuario {
         return senha;
     }
 
-    public String getRegiao() {
-        return regiao;
+    public String getEndereco() {
+        return endereco;
     }
 
     public boolean getNotificacoes() {
         return notificacoes;
-    }
-
-    public String getObjetivo() {
-        return objetivo;
     }
 
     public String getArea() {
@@ -88,10 +57,6 @@ public class Usuario {
 
     public Long getIluminacao() {
         return iluminacao;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setEmail(String email) {
@@ -106,16 +71,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public void setRegiao(String regiao) {
-        this.regiao = regiao;
+    public void setEndereco(String regiao) {
+        this.endereco = regiao;
     }
 
     public void setNotificacoes(boolean notificacoes) {
         this.notificacoes = notificacoes;
-    }
-
-    public void setObjetivo(String objetivo) {
-        this.objetivo = objetivo;
     }
 
     public void setArea(String area) {
@@ -125,5 +86,4 @@ public class Usuario {
     public void setIluminacao(Long iluminacao) {
         this.iluminacao = iluminacao;
     }
-
 }
