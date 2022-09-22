@@ -3,4 +3,4 @@ build/
 Makefile
 README.md
 docker-compose.yml
-docker/db_credentials.env
+.env
