@@ -7,6 +7,7 @@ services:
     user: "postgres"
     hostname: database
     container_name: plantei-database
+    cap_drop: ["ALL"]
     restart: always
 
     build:
@@ -41,6 +42,7 @@ services:
     image: plantei-backend:1.0
     hostname: plantei
     container_name: plantei-backend
+    cap_drop: ["ALL"]
 
     build:
       context: .
@@ -51,25 +53,6 @@ services:
 
     ports:
       - 8080:8080
-
-#    read_only: true
-#    tmpfs:
-#      - /bin
-#      - /boot
-#      - /etc
-#      - /home
-#      - /lib
-#      - /mnt
-#      - /opt
-#      - /root
-#      - /run
-#      - /sbin
-#      - /server
-#      - /srv
-#      - /sys
-#      - /tmp
-#      - /usr
-#      - /var
 
 networks:
   back:
