@@ -1,13 +1,3 @@
-CREATE USER planteiAdmin WITH ENCRYPTED PASSWORD 'planteiAdmin';
-
-CREATE DATABASE plantei WITH
-        OWNER = planteiAdmin
-        ENCODING = 'UTF8'
-        TABLESPACE = pg_default
-        CONNECTION LIMIT = -1;
-
-GRANT ALL PRIVILEGES ON DATABASE plantei TO planteiAdmin;
-
 create table Usuario(
 	ID_usuario serial primary key,
 	nome varchar(50) not null,
