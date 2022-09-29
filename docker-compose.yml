@@ -7,8 +7,7 @@ services:
     user: "postgres"
     hostname: database
     container_name: plantei-database
-    cap_drop:
-      - ALL
+    cap_drop: ["ALL"]
     restart: always
 
     build:
