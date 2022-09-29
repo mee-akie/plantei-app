@@ -29,7 +29,7 @@ services:
     volumes:
       - postgres_db:/var/lib/postgresql
       - postgres_log:/var/log/postgresql
-      - postgres_conf:/var/log/postgresql
+      - postgres_conf:/etc/postgresql
 
     healthcheck:
        test: [ "CMD", "pg_isready", "--dbname=${POSTGRES_DB}", "--username=${POSTGRES_USER}" ]
