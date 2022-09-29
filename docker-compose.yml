@@ -7,7 +7,8 @@ services:
     user: "postgres"
     hostname: database
     container_name: plantei-database
-    cap_drop: ["ALL"]
+    cap_drop:
+      - ALL
     restart: always
 
     build:
@@ -24,15 +25,23 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - LANG="pt_BR.UTF-8"
 
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - postgres_db:/var/lib/postgresql
+      - postgres_log:/var/log/postgresql
+      - postgres_conf:/var/log/postgresql
 
     healthcheck:
        test: [ "CMD", "pg_isready", "--dbname=${POSTGRES_DB}", "--username=${POSTGRES_USER}" ]
        interval: 5s
        timeout: 5s
        retries: 5
+
+    read_only: true
+
+    tmpfs:
+      - /var/run/postgresql
 
   plantei:
 
@@ -59,4 +68,6 @@ networks:
     driver: bridge
 
 volumes:
-  postgres:
+  postgres_db:
+  postgres_log:
+  postgres_conf:
