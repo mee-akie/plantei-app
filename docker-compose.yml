@@ -62,6 +62,11 @@ services:
     ports:
       - 8080:8080
 
+    read_only: true
+
+    tmpfs:
+      - /tmp
+
 networks:
   back:
     driver: bridge
