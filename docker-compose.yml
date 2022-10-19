@@ -1,23 +1,77 @@
-version: '3'
+version: '3.8'
 services:
+
   database:
+
     image: plantei-database:1.0
+    user: "postgres"
     hostname: database
     container_name: plantei-database
+    cap_drop: ["ALL"]
+    restart: always
+
     build:
       context: docker
       dockerfile: Dockerfile.postgres
-    restart: always
-    env_file:
-      - ./docker/db_credentials.env
+
+    networks:
+      - back
+
+    expose:
+      - '5432'
+
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - LANG="pt_BR.UTF-8"
+
+    volumes:
+      - postgres_db:/var/lib/postgresql
+      - postgres_log:/var/log/postgresql
+      - postgres_conf:/etc/postgresql
+
+    healthcheck:
+       test: [ "CMD", "pg_isready", "--dbname=${POSTGRES_DB}", "--username=${POSTGRES_USER}" ]
+       interval: 5s
+       timeout: 5s
+       retries: 5
+
+    read_only: true
+
+    tmpfs:
+      - /var/run/postgresql
+
   plantei:
+
+    depends_on:
+      - database
+
     image: plantei-backend:1.0
     hostname: plantei
     container_name: plantei-backend
+    cap_drop: ["ALL"]
+
     build:
       context: .
       dockerfile: docker/Dockerfile.plantei
+
+    networks:
+      - back
+
     ports:
       - 8080:8080
-    depends_on:
-      - database
+
+    read_only: true
+
+    tmpfs:
+      - /tmp
+
+networks:
+  back:
+    driver: bridge
+
+volumes:
+  postgres_db:
+  postgres_log:
+  postgres_conf:
