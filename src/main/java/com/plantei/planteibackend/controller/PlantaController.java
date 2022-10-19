@@ -1,7 +1,6 @@
 package com.plantei.planteibackend.controller;
 
 import com.plantei.planteibackend.exception.ResourceNotFoundException;
-import com.plantei.planteibackend.model.DescricaoPlanta;
 import com.plantei.planteibackend.model.Planta;
 import com.plantei.planteibackend.repository.RepositorioPlanta;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,6 @@ public class PlantaController {
      */
     @PostMapping(path = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Planta> addPlant(@RequestBody Planta planta) {
-        planta.setDescricaoPlanta(new DescricaoPlanta(planta));
         repositorioPlanta.save(planta);
 
         return ResponseEntity.ok(planta);
