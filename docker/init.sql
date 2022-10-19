@@ -11,7 +11,16 @@ create table Usuario(
 
 create table Planta(
 	ID_planta serial primary key,
-	nome varchar(40) not null
+	nome varchar(40) not null,
+	beneficio varchar(200),
+	area_recomendada varchar(7) check(area_recomendada in ('PEQUENO', 'MEDIO', 'GRANDE', 'NULO')),
+	regiao_ideal varchar(30) not null,
+	iluminacao_ideal int not null,
+	qtd_agua int not null,
+	freq_regar int not null,
+	tempo_colheita int not null,
+	freq_adubagem int not null,
+	modo_de_plantar varchar(1000)
 );
 
 create table planta_do_usuario (
@@ -47,7 +56,7 @@ alter table lista_favoritos add constraint FK_favorito_planta foreign key(idPlan
 
 
 
-create table Descricao_planta(
+/*create table Descricao_planta(
 	ID_descricao serial primary key,
 	beneficio varchar(200),
 	area_recomendada varchar(7) check(area_recomendada in ('PEQUENO', 'MEDIO', 'GRANDE', 'NULO')),
@@ -60,8 +69,9 @@ create table Descricao_planta(
 	modo_de_plantar varchar(1000),
 	idPlanta int not null
 );
+*/
 
-alter table Descricao_planta add constraint FK_descricao_idPlanta foreign key(idPlanta) references Planta(ID_planta);
+--alter table Descricao_planta add constraint FK_descricao_idPlanta foreign key(idPlanta) references Planta(ID_planta);
 
 create table Comida(
 	nome varchar(50) not null,
@@ -75,15 +85,18 @@ select * from Planta;
 select * from planta_do_usuario;
 select * from Plantacao;
 select * from lista_favoritos;
-select * from Descricao_planta;
+--select * from Descricao_planta;
 select * from Comida;
 
 insert into usuario (nome, email, senha, endereco, notificacoes, area, iluminacao) values('Abigail', 'abigail@gg.com', '123', 'rua augusta do faro', 'true', 'PEQUENO', '5');
 insert into usuario (nome, email, senha, endereco, notificacoes, area, iluminacao) values('Robert', 'roro@gg.com', '123abc', 'rua monte cristo', 'false', 'MEDIO', '1');
 
-insert into Planta (nome) values ('carnivora');
-insert into Planta (nome) values ('gira-sol');
-insert into Planta (nome) values ('hortela');
+insert into Planta (nome,beneficio, area_recomendada, regiao_ideal, iluminacao_ideal, qtd_agua, freq_regar, tempo_colheita, freq_adubagem, modo_de_plantar)
+			values ('carnivora','bom', 'MEDIO', 'umido', 3, 30, 2, 20, 3, 'plantar com cuidado');
+insert into Planta (nome,beneficio, area_recomendada, regiao_ideal, iluminacao_ideal, qtd_agua, freq_regar, tempo_colheita, freq_adubagem, modo_de_plantar) 
+			values ('gira-sol','bom', 'PEQUENO', 'umido', 4, 33, 1, 22, 5, 'plantar com cuidado');
+insert into Planta (nome,beneficio, area_recomendada, regiao_ideal, iluminacao_ideal, qtd_agua, freq_regar, tempo_colheita, freq_adubagem, modo_de_plantar) 
+			values ('hortela','bom', 'GRANDE', 'umido', 1, 20, 3, 20, 2, 'plantar com cuidado');
 
 insert into planta_do_usuario (idade_planta, tempo_sem_regar, tipo_vaso, idPlanta, idUsuario) 
             values ('2022-02-12', '2022-03-21 09:12:02', 'GARRAFA_PET', 1, 1);
@@ -102,6 +115,7 @@ insert into lista_favoritos (idUsuario, idPlanta) values (1, 3);
 insert into lista_favoritos (idUsuario, idPlanta) values (2, 1);
 insert into lista_favoritos (idUsuario, idPlanta) values (2, 2);
 
+/*
 insert into descricao_planta (beneficio, area_recomendada, regiao_ideal, iluminacao_ideal, qtd_agua, freq_regar, tempo_colheita, freq_adubagem, modo_de_plantar, idPlanta)
             values('bom', 'MEDIO', 'umido', 3, 30, 2, 20, 3, 'plantar com cuidado', 1);
 			
@@ -110,6 +124,7 @@ insert into descricao_planta (beneficio, area_recomendada, regiao_ideal, ilumina
 			
 insert into descricao_planta (beneficio, area_recomendada, regiao_ideal, iluminacao_ideal, qtd_agua, freq_regar, tempo_colheita, freq_adubagem, modo_de_plantar, idPlanta)
             values('bom', 'GRANDE', 'umido', 1, 20, 3, 20, 2, 'plantar com cuidado', 3);
+*/
 
 insert into comida (nome, idPlanta) values ('lasanha', 1);
 insert into comida (nome, idPlanta) values ('polenta', 2);
