@@ -73,6 +73,15 @@ public class PlantaController {
                 .orElseThrow(() -> new ResourceNotFoundException("Planta com id '" + id + "' nao foi encontrado"));
 
         plantaAlterada.setNome(dadosPlanta.getNome());
+        plantaAlterada.setBeneficio(dadosPlanta.getBeneficio());
+        plantaAlterada.setArea_recomendada(dadosPlanta.getArea_recomendada());
+        plantaAlterada.setRegiao_ideal(dadosPlanta.getRegiao_ideal());
+        plantaAlterada.setIluminacao_ideal(dadosPlanta.getIluminacao_ideal());
+        plantaAlterada.setQtd_agua(dadosPlanta.getQtd_agua());
+        plantaAlterada.setFreq_regar(dadosPlanta.getFreq_regar());
+        plantaAlterada.setTempo_colheita(dadosPlanta.getTempo_colheita());
+        plantaAlterada.setFreq_adubagem(dadosPlanta.getFreq_adubagem());
+        plantaAlterada.setModo_de_plantar(dadosPlanta.getModo_de_plantar());
 
         repositorioPlanta.save(plantaAlterada);
 
