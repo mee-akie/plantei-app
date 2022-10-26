@@ -3,6 +3,7 @@ package com.plantei.planteibackend.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "usuario")
 public class Usuario {
 
     @Id
@@ -57,6 +58,10 @@ public class Usuario {
 
     public Long getIluminacao() {
         return iluminacao;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setEmail(String email) {
