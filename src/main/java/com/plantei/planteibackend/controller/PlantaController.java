@@ -8,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -25,7 +24,7 @@ public class PlantaController {
      * @return JSON com todas as plantas cadastradas no banco de dados.
      */
     @GetMapping("/listar")
-    public List<Planta> getAllPlants(HttpServletRequest request) {
+    public List<Planta> getAllPlants() {
         return repositorioPlanta.findAll();
     }
 

@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,11 +27,35 @@ public class PlantaDoUsuarioController {
     @Autowired
     private RepositorioUsuario repositorioUsuario;
 
-    @GetMapping("/listar")
-    public List<PlantaDoUsuario> getAllUserPlants(HttpServletRequest request) {
-        return repositorioPlantaDoUsuario.findAll();
+    /**
+     * Retorna uma lista com todas as plantas do usuario cujo ID eh passado
+     * no path da requisicao.
+     *
+     * @param idUsuario ID do usuario
+     * @return lista com os dados das planta de um usuario especifico
+     */
+    @GetMapping("/listar/{idUsuario}")
+    public List<PlantaDoUsuario> getAllUserPlants(@PathVariable long idUsuario) {
+        List<PlantaDoUsuario> listaCompleta = repositorioPlantaDoUsuario.findAll();
+
+        List<PlantaDoUsuario> plantasDoUsuario = new ArrayList<>();
+        for (PlantaDoUsuario planta : listaCompleta) {
+            if (planta.getUsuario().getId() == idUsuario) {
+                plantasDoUsuario.add(planta);
+            }
+        }
+
+        return plantasDoUsuario;
     }
 
+    /**
+     * Retorna os dados de uma planta de um usuario. O ID dessa planta deve ser fornecido no path da requisicao.
+     * OBS: note que nao eh o ID do usuario e nem o ID da planta, e sim o ID da tupla da tabela ({@link PlantaDoUsuario#getId()}).
+     *
+     * @param id ID da plantaDoUsuario
+     * @return
+     * @throws ResourceNotFoundException
+     */
     @GetMapping("/{id}")
     public ResponseEntity<PlantaDoUsuario> getUserPlantByid(@PathVariable long id) throws ResourceNotFoundException {
         PlantaDoUsuario dadosPlantaDoUsuario = repositorioPlantaDoUsuario.findById(id)
