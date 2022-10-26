@@ -2,7 +2,7 @@
 
 start:
 	@echo 'Starting containers...'
-	@COMPOSE_PROJECT_NAME=plantei docker-compose --profile deploy up
+	@COMPOSE_PROJECT_NAME=plantei docker-compose up
 
 stop:
 	@echo 'Stopping containers...'
@@ -10,7 +10,7 @@ stop:
 
 build:
 	@echo 'Building the docker image...'
-	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose --profile deploy build
+	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
 
 clean:
 	@echo 'Removing the docker images...'
