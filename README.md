@@ -107,6 +107,7 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
         [
           {
               "id": 2,
+              "nome": "plantacao de cenoura da Maria",
               "idade_planta": "2022-01-03",
               "tempo_sem_regar": "2022-02-23 16:12:12",
               "tipo_vaso": "VASO_PLASTICO",
@@ -136,6 +137,7 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
           },
           {
               "id": 3,
+              "nome": "plantacao de beterraba da Maria",
               "idade_planta": "2020-10-12",
               "tempo_sem_regar": "2022-03-22 12:43:02",
               "tipo_vaso": "CANTEIRO",
@@ -178,6 +180,7 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
       ```
         {
           "id": 1,
+          "nome": "plantacao de cenoura da Maria",
           "idade_planta": "2022-02-11",
           "tempo_sem_regar": "2022-03-21 09:12:02",
           "tipo_vaso": "CANTEIRO",
@@ -214,38 +217,40 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
     requisicao.
   - **Exemplo de uso:**
   
-    ![image](https://user-images.githubusercontent.com/67126558/198037374-9b7c4abe-9122-4eff-9589-268dae4af832.png)
+    ![image](https://user-images.githubusercontent.com/67126558/198063376-ab899fa0-1645-437d-a7f9-3fba8d3e6fc4.png)
 
-    - Resposta:
+
+    - Resposta: [200 OK]
       ```
         {
-          "id": 7,
-          "idade_planta": "2022-02-12",
-          "tempo_sem_regar": "2022-03-21 09:12:02",
-          "tipo_vaso": "CANTEIRO",
-          "planta": {
-              "id": 2,
-              "nome": "gira-sol",
-              "beneficio": "bom",
-              "area_recomendada": "PEQUENO",
-              "regiao_ideal": "umido",
-              "iluminacao_ideal": 4,
-              "qtd_agua": 33,
-              "freq_regar": 1,
-              "tempo_colheita": 22,
-              "freq_adubagem": 5,
-              "modo_de_plantar": "plantar com cuidado"
-          },
-          "usuario": {
-              "id": 2,
-              "email": "roro@gg.com",
-              "nome": "Robert",
-              "senha": "123abc",
-              "endereco": "rua monte cristo",
-              "notificacoes": false,
-              "area": "MEDIO",
-              "iluminacao": 1
-          }
+            "id": 4,
+            "nome": "plantacao de cenoura do Pedro",
+            "idade_planta": "2022-02-12",
+            "tempo_sem_regar": "2022-03-21 09:12:02",
+            "tipo_vaso": "CANTEIRO",
+            "planta": {
+                "id": 2,
+                "nome": "gira-sol",
+                "beneficio": "bom",
+                "area_recomendada": "PEQUENO",
+                "regiao_ideal": "umido",
+                "iluminacao_ideal": 4,
+                "qtd_agua": 33,
+                "freq_regar": 1,
+                "tempo_colheita": 22,
+                "freq_adubagem": 5,
+                "modo_de_plantar": "plantar com cuidado"
+            },
+            "usuario": {
+                "id": 2,
+                "email": "roro@gg.com",
+                "nome": "Robert",
+                "senha": "123abc",
+                "endereco": "rua monte cristo",
+                "notificacoes": false,
+                "area": "MEDIO",
+                "iluminacao": 1
+            }
         }
       ```
 
@@ -253,13 +258,13 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
   - **Descricao:** Altera os dados de uma planta do usuario, cujo ID é aquele fornecido no path da requisicao.
   - **Exemplo de uso:**
   
-    ![image](https://user-images.githubusercontent.com/67126558/198038226-4a4c3f27-8cc8-4f0b-98e8-2977dc733f78.png)
-
+    ![image](https://user-images.githubusercontent.com/67126558/198062541-04f330fa-0d64-4753-85a8-4d5cc0f18c99.png)
   
-    - Resposta:
+    - Resposta: [200 OK]
       ```
         {
             "id": 1,
+            "nome": "plantacao de cenoura da Maria",
             "idade_planta": "2022-02-12",
             "tempo_sem_regar": "2022-03-21 09:12:02",
             "tipo_vaso": "CANTEIRO",
@@ -286,7 +291,7 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
                 "area": "PEQUENO",
                 "iluminacao": 5
             }
-         }
+        }
       ```
 
 - [DELETE] `/api/plantaDoUsuario/remover/{id}`
