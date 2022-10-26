@@ -1,7 +1,10 @@
 package com.plantei.planteibackend.controller;
 
 import com.plantei.planteibackend.exception.ResourceNotFoundException;
+import com.plantei.planteibackend.model.PlantaDoUsuario;
 import com.plantei.planteibackend.model.Usuario;
+import com.plantei.planteibackend.repository.RepositorioListaFavoritos;
+import com.plantei.planteibackend.repository.RepositorioPlantaDoUsuario;
 import com.plantei.planteibackend.repository.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,6 +19,12 @@ public class UserController {
 
     @Autowired
     private RepositorioUsuario repositorioUsuario;
+
+    @Autowired
+    private RepositorioPlantaDoUsuario repositorioPlantaDoUsuario;
+
+    @Autowired
+    private RepositorioListaFavoritos repositorioListaFavoritos;
 
     /**
      * <p>Retorna uma lista com todos os usuarios existentes no banco de dados.</p>
@@ -49,7 +58,6 @@ public class UserController {
      * Path: /api/usuario/add
      *
      * @param usuario JSON com os dados do novo usuario.
-     * @see Usuario#Usuario(String, String, String, String, String, Long)
      */
     @PostMapping(path = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Usuario> addUser(@RequestBody Usuario usuario) {
@@ -90,6 +98,22 @@ public class UserController {
      */
     @DeleteMapping("/remover/{id}")
     public ResponseEntity<Long> deleteUserById(@PathVariable Long id) {
+
+        List<PlantaDoUsuario> plantas = repositorioPlantaDoUsuario.findAll();
+        for (PlantaDoUsuario planta : plantas) {
+            if (planta.getUsuario().getId() == id) {
+                repositorioPlantaDoUsuario.delete(planta);
+            }
+        }
+
+// TO DO: REMOVER DEPOIS AS LISTAS DE FAVORITOS DO USUARIO
+//        List<ListaFavoritos> listaFavoritos = repositorioListaFavoritos.findAll();
+//        for (ListaFavoritos lista : listaFavoritos) {
+//            if (lista.getUsuario().getId() == id) {
+//                repositorioListaFavoritos.delete(lista);
+//            }
+//        }
+
         repositorioUsuario.deleteById(id);
 
         return ResponseEntity.ok(id);

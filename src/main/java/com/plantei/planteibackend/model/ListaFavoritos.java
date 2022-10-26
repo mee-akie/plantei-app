@@ -1,6 +1,6 @@
 package com.plantei.planteibackend.model;
 
-public class Lista_favoritos {
+public class ListaFavoritos {
     //idUsuario
     //idPlanta_do_Usuario
 }

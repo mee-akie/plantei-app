@@ -1,8 +1,6 @@
 package com.plantei.planteibackend.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -30,12 +28,10 @@ public class PlantaDoUsuario {
     private String tipo_vaso;
 
     @ManyToOne(targetEntity = Planta.class)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_planta")
     private Planta planta;
 
     @ManyToOne(targetEntity = Usuario.class)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
