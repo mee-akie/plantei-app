@@ -85,6 +85,7 @@ public class PlantaDoUsuarioController {
         PlantaDoUsuario plantaAlterada = repositorioPlantaDoUsuario.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Planta do usuario com id '" + id + "' nao foi encontrado"));
 
+        plantaAlterada.setNome(dadosPlanta.getNome());
         plantaAlterada.setIdade_planta(dadosPlanta.getIdade_planta());
         plantaAlterada.setTempo_sem_regar(dadosPlanta.getTempo_sem_regar());
         plantaAlterada.setTipo_vaso(dadosPlanta.getTipo_vaso());

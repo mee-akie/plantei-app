@@ -1,6 +1,8 @@
 package com.plantei.planteibackend.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -13,6 +15,9 @@ public class PlantaDoUsuario {
     @Column
     private Long id;
 
+    @Column(nullable = false)
+    private String nome;
+
     @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date idade_planta;
@@ -24,11 +29,13 @@ public class PlantaDoUsuario {
     @Column(nullable = false)
     private String tipo_vaso;
 
-    @ManyToOne(cascade = {javax.persistence.CascadeType.ALL}, targetEntity = Planta.class)
+    @ManyToOne(targetEntity = Planta.class)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_planta")
     private Planta planta;
 
-    @ManyToOne(cascade = {javax.persistence.CascadeType.ALL}, targetEntity = Usuario.class)
+    @ManyToOne(targetEntity = Usuario.class)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
@@ -37,6 +44,10 @@ public class PlantaDoUsuario {
 
     public Long getId() {
         return id;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public Date getIdade_planta() {
@@ -59,6 +70,14 @@ public class PlantaDoUsuario {
         return usuario;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public void setIdade_planta(Date idade_planta) {
         this.idade_planta = idade_planta;
     }
@@ -69,10 +88,6 @@ public class PlantaDoUsuario {
 
     public void setTipo_vaso(String tipo_vaso) {
         this.tipo_vaso = tipo_vaso;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setPlanta(Planta planta) {
