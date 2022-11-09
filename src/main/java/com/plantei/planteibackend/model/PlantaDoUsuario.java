@@ -7,13 +7,14 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "planta_do_usuario")
 public class PlantaDoUsuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String nome;
 
     @Column
@@ -24,7 +25,7 @@ public class PlantaDoUsuario {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp tempo_sem_regar;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 15)
     private String tipo_vaso;
 
     @ManyToOne(targetEntity = Planta.class)

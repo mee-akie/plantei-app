@@ -1,6 +1,7 @@
 package com.plantei.planteibackend.controller;
 
 import com.plantei.planteibackend.exception.ResourceNotFoundException;
+import com.plantei.planteibackend.model.ListaFavoritos;
 import com.plantei.planteibackend.model.PlantaDoUsuario;
 import com.plantei.planteibackend.model.Usuario;
 import com.plantei.planteibackend.repository.RepositorioListaFavoritos;
@@ -106,13 +107,12 @@ public class UserController {
             }
         }
 
-// TO DO: REMOVER DEPOIS AS LISTAS DE FAVORITOS DO USUARIO
-//        List<ListaFavoritos> listaFavoritos = repositorioListaFavoritos.findAll();
-//        for (ListaFavoritos lista : listaFavoritos) {
-//            if (lista.getUsuario().getId() == id) {
-//                repositorioListaFavoritos.delete(lista);
-//            }
-//        }
+        List<ListaFavoritos> listaFavoritos = repositorioListaFavoritos.findAll();
+        for (ListaFavoritos lista : listaFavoritos) {
+            if (lista.getId_usuario() == id) {
+                repositorioListaFavoritos.delete(lista);
+            }
+        }
 
         repositorioUsuario.deleteById(id);
 
