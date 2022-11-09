@@ -26,6 +26,9 @@ public class ListaFavoritos {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
     
+    public ListaFavoritos() {
+    }
+	
     public Long getId() {
         return id;
     }
