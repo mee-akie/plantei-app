@@ -47,6 +47,7 @@ create table lista_favoritos(
 );
 
 create table Comida(
+	id int not null generated always as identity,
 	nome varchar(50) not null,
 	id_planta int,
   foreign key(id_planta) references planta(id)

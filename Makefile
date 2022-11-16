@@ -1,6 +1,6 @@
 .PHONY: 'start stop build clean setup'
 
-start:
+start: build
 	@echo 'Starting containers...'
 	@docker-compose up
 
