@@ -2,76 +2,126 @@ version: '3.8'
 services:
 
   database:
-
-    image: plantei-database:1.0
-    user: "postgres"
     hostname: database
-    container_name: plantei-database
-    cap_drop: ["ALL"]
-    restart: always
-
+    container_name: plantei_database
+    image: plantei_database:1.0
     build:
       context: docker
       dockerfile: Dockerfile.postgres
+    stop_signal: SIGINT
 
-    networks:
-      - back
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+          pids: 30
+        reservations:
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
 
-    expose:
-      - '5432'
+    user: "postgres"
+    restart: unless-stopped
+    cap_drop: ["ALL"]
 
     environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB_FILE=${POSTGRES_DB_FILE:?err}
+      - POSTGRES_USER_FILE=${POSTGRES_USER_FILE:?err}
+      - POSTGRES_PASSWORD_FILE=${POSTGRES_PASSWORD_FILE:?err}
       - LANG="pt_BR.UTF-8"
 
+    secrets:
+      - source: postgres_db
+        target: postgres_db
+        mode: 0440
+      - source: postgres_user
+        target: postgres_user
+        mode: 0440
+      - source: postgres_passwd
+        target: postgres_passwd
+        mode: 0440
+
+    networks: ["database"]
+    expose: ["5432"]
+
     volumes:
-      - postgres_db:/var/lib/postgresql
-      - postgres_log:/var/log/postgresql
-      - postgres_conf:/etc/postgresql
+      - postgres_db:/var/lib/postgresql/data:rw
+      - postgres_log:/var/log/postgresql:rw
+      - postgres_conf:/etc/postgresql:ro
+
+    read_only: true
+    tmpfs: ["/var/run/postgresql"]
 
     healthcheck:
-       test: [ "CMD", "pg_isready", "--dbname=${POSTGRES_DB}", "--username=${POSTGRES_USER}" ]
+       test: pg_isready --dbname=$$(cat ${POSTGRES_DB_FILE:?err}) --username=$$(cat ${POSTGRES_USER_FILE:?err})
        interval: 5s
        timeout: 5s
        retries: 5
 
-    read_only: true
-
-    tmpfs:
-      - /var/run/postgresql
-
-  plantei:
-
-    depends_on:
-      - database
-
-    image: plantei-backend:1.0
-    hostname: plantei
-    container_name: plantei-backend
-    cap_drop: ["ALL"]
-
+  backend:
+    hostname: backend
+    container_name: plantei_backend
+    image: plantei_backend:1.0
     build:
       context: .
       dockerfile: docker/Dockerfile.plantei
+    stop_signal: SIGINT
 
-    networks:
-      - back
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          pids: 40
+        reservations:
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
 
-    ports:
-      - 8080:8080
+    restart: always
+    cap_drop: ["ALL"]
+
+    networks: ["database", "backend"]
+    ports: ["8080:8080/tcp"]
 
     read_only: true
+    tmpfs: ["/tmp"]
 
-    tmpfs:
-      - /tmp
+    depends_on:
+      database:
+        condition: service_healthy
+
+    #frontend:
+    #  profiles: ["deploy"]
+    #  hostname: frontend
+    #  container_name: plantei_frontend
+    #  image: plantei_backend:1.0
+    #  build:
+    #    context: .
+    #    dockerfile: docker/Dockerfile.front
+    #
+    #  networks: ["backend"]
 
 networks:
-  back:
+  backend:
+    driver: bridge
+  database:
     driver: bridge
 
 volumes:
   postgres_db:
   postgres_log:
-  postgres_conf:
+  postgres_conf: # Change to configs:
+
+secrets:
+  postgres_db:
+    file: ./docker/postgres-db.txt
+  postgres_user:
+    file: ./docker/postgres-user.txt
+  postgres_passwd:
+    file: ./docker/postgres-passwd.txt
