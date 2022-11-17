@@ -29,11 +29,11 @@ public class ComidaController {
      * @param idPlanta ID da planta
      * @return lista com os nomes das comidas de uma planta especifica
      */
-    @GetMapping("/listar/{idPlanta}")
+    @GetMapping("/listar/planta/{idPlanta}")
     public List<Comida> getAllFood(@PathVariable long idPlanta) {
         List<Comida> listaCompleta = repositorioComida.findAll();
 
-        List<Comida> comidasDasPlantas= new ArrayList<>();
+        List<Comida> comidasDasPlantas = new ArrayList<>();
         for (Comida comida : listaCompleta) {
             if (comida.getPlanta().getId() == idPlanta) {
                 comidasDasPlantas.add(comida);
@@ -44,18 +44,24 @@ public class ComidaController {
     }
 
     /**
-     * Retorna os dados de uma comida. O ID dessa comida deve ser fornecido no path da requisicao.
+     * Retorna as plantas para fazer uma comida. O nome dessa comida deve ser fornecido no path da requisicao.
      *
-     * @param id ID da comida
+     * @param nome nome da comida
      * @return
      * @throws ResourceNotFoundException
      */
-    @GetMapping("/{id}")
-    public ResponseEntity<Comida> getFoodByid(@PathVariable long id) throws ResourceNotFoundException {
-        Comida dadosPlantaDoUsuario = repositorioComida.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Comida com id '" + id + "' nao foi encontrada"));
+    @GetMapping("/listar/{nome}")
+    public List<Comida> getFoodByName(@PathVariable String nome) throws ResourceNotFoundException {
+        List<Comida> listaCompleta = repositorioComida.findAll();
 
-        return ResponseEntity.ok().body(dadosPlantaDoUsuario);
+        List<Comida> comidasDasPlantas = new ArrayList<>();
+        for (Comida comida : listaCompleta) {
+            if (comida.getNome().equals(nome)) {
+                comidasDasPlantas.add(comida);
+            }
+        }
+
+        return comidasDasPlantas;
     }
 
     @PostMapping(path = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -69,25 +75,21 @@ public class ComidaController {
         return ResponseEntity.ok(comida);
     }
 
-    @PutMapping(path = "/alterarDados/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Comida> updateFood(@PathVariable long id, @RequestBody Comida dadosComida) throws ResourceNotFoundException {
-        Comida comidaAlterada = repositorioComida.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Comida com id '" + id + "' nao foi encontrado"));
+    @DeleteMapping("/remover/{nome}")
+    public List<Comida> deleteFoodByName(@PathVariable String nome) {
+        List<Comida> listaCompleta = repositorioComida.findAll();
 
-        comidaAlterada.setNome(dadosComida.getNome());
+        List<Comida> listaDeletar = new ArrayList<>();
+        for (Comida comida : listaCompleta) {
+            if (comida.getNome().equals(nome)) {
+                listaDeletar.add(comida);
+            }
+        }
 
-        Planta planta = repositorioPlanta.findById(dadosComida.getPlanta().getId()).orElseThrow(() -> new ResourceNotFoundException("Planta com id '" + id + "' nao foi encontrado"));
-        comidaAlterada.setPlanta(planta);
+        for (Comida comida : listaDeletar) {
+            repositorioComida.delete(comida);
+        }
 
-        repositorioComida.save(comidaAlterada);
-
-        return ResponseEntity.ok(comidaAlterada);
-    }
-
-    @DeleteMapping("/remover/{id}")
-    public ResponseEntity<Long> deleteFoodById(@PathVariable Long id) {
-        repositorioComida.deleteById(id);
-
-        return ResponseEntity.ok(id);
+        return listaDeletar;
     }
 }
