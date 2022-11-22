@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.4
 
-FROM node:18 AS development
+FROM node:18 AS build
 
 WORKDIR /plantei
 
@@ -14,32 +14,10 @@ COPY . /plantei
 ENV CI=true
 ENV PORT=3000
 
-CMD [ "npm", "run", "dev" ]
-#CMD [ "npm", "start" ]
-#
-#
-#FROM development AS build
-#
+ENTRYPOINT [ "npm", "run", "dev" ]
 #RUN [ "npm", "run", "build" ]
 #
-#FROM development as dev-envs
-#RUN <<EOF
-#apt-get update
-#apt-get install -y --no-install-recommends git
-#EOF
-#
-#RUN <<EOF
-#useradd -s /bin/bash -m vscode
-#groupadd docker
-#usermod -aG docker vscode
-#EOF
-#
-#COPY --from=gloursdocker/docker / /
-#CMD [ "npm", "start" ]
-#
-#
 #FROM nginx:alpine
-#
 #
 #COPY --from=build /plantei/.nginx/nginx.conf /etc/nginx/conf.d/default.conf
 #
@@ -53,4 +31,3 @@ CMD [ "npm", "run", "dev" ]
 #
 ## Containers run nginx with global directives and daemon off
 #ENTRYPOINT ["nginx", "-g", "daemon off;"]
-#

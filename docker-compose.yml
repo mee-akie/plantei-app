@@ -9,6 +9,8 @@ services:
     build:
       context: plantei-frontend
       dockerfile: Dockerfile
+    networks:
+      - front
     ports:
       - 3000:3000
 
@@ -63,6 +65,9 @@ services:
 networks:
   back:
     name: plantei-backend
+    driver: bridge
+  front:
+    name: plantei-frontend
     driver: bridge
 
 volumes:
