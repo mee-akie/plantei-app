@@ -22,4 +22,4 @@ clean:
 	@docker image rm plantei-backend:1.0 2>&- || echo 'Error while removing plantei-backend image'
 	@docker network rm plantei-backend 2>&- || echo 'Error while removing plantei-backend network'
 	@docker network rm plantei-frontend 2>&- || echo 'Error while removing plantei-frontend network'
-	@docker volume rm plantei-backend_postgres_db 2>&- || echo 'Error while removing plantei-database-db volume'
+	@docker volume rm plantei-db 2>&- || echo 'Error while removing plantei-db volume'
