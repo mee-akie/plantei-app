@@ -44,7 +44,7 @@ docker-compose --profile deploy down
   - `CREATE USER planteiadmin WITH ENCRYPTED PASSWORD 'planteiAdmin';`
   - `CREATE DATABASE plantei WITH OWNER = planteiAdmin ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;`
   - `GRANT ALL PRIVILEGES ON DATABASE plantei TO planteiadmin;`
-    
+
   ![image](https://user-images.githubusercontent.com/67126558/190192112-0a13c2c3-1277-49d5-893c-f8a32ec7ac8e.png)
 
 
@@ -70,26 +70,3 @@ A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/)
 - Java: [Intellij](https://www.jetbrains.com/pt-br/idea/)
 - Banco de dados (postgresql): [BeeKeeper Studio](https://www.beekeeperstudio.io/)
 - Testar requisições: [Postman](https://www.postman.com/)
-
-## End-points
-
-### Dados do usuário
-
-- [GET] `/api/usuario/listar` => ira fornecer uma lista (JSON) contendo os dados de todos os usuarios existentes no
-  banco de dados.
-- [GET] `/api/usuario/{id}` => ira fornecer os dados (JSON) do usuario com o ID fornecido no path da requisicao.
-- [POST] `/api/usuario/add` => ira adicionar um usuario novo, cujos dados sao enviados no body da requisicao.
-- [PUT] `/api/usuario/alterarDados/{id}` => altera os dados de um usuario, cujo ID é aquele fornecido no path da
-  requisicao.
-- [DELETE] `/api/usuario/remover/{id}` => remove do banco o usuario cujo ID é fornecido no path da requisição.
-
-### Dados da planta
-
-- [GET] `/api/planta/listar` => ira fornecer uma lista (JSON) contendo os dados de todas as plantas existentes no banco
-  de dados.
-- [GET] `/api/planta/{id}` => ira fornecer os dados (JSON) da planta com o ID fornecido no path da requisicao.
-- [POST] `/api/planta/add` => ira adicionar uma planta nova, cujos dados sao enviados no body da requisicao.
-- [PUT] `/api/planta/alterarDados/{id}` => altera os dados de uma planta, cujo ID é aquele fornecido no path da
-  requisicao.
-- [DELETE] `/api/planta/remover/{id}` => remove do banco a planta cujo ID é fornecido no path da requisição.
-

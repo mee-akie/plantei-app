@@ -1,14 +1,17 @@
 package com.plantei.planteibackend.controller;
 
 import com.plantei.planteibackend.exception.ResourceNotFoundException;
+import com.plantei.planteibackend.model.ListaFavoritos;
+import com.plantei.planteibackend.model.PlantaDoUsuario;
 import com.plantei.planteibackend.model.Usuario;
+import com.plantei.planteibackend.repository.RepositorioListaFavoritos;
+import com.plantei.planteibackend.repository.RepositorioPlantaDoUsuario;
 import com.plantei.planteibackend.repository.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -18,6 +21,12 @@ public class UserController {
     @Autowired
     private RepositorioUsuario repositorioUsuario;
 
+    @Autowired
+    private RepositorioPlantaDoUsuario repositorioPlantaDoUsuario;
+
+    @Autowired
+    private RepositorioListaFavoritos repositorioListaFavoritos;
+
     /**
      * <p>Retorna uma lista com todos os usuarios existentes no banco de dados.</p>
      * Path: /api/usuario/listar
@@ -25,7 +34,7 @@ public class UserController {
      * @return Uma lista (JSON) com todos os usuarios existentes no banco de dados.
      */
     @GetMapping("/listar")
-    public List<Usuario> getAllUsers(HttpServletRequest request) {
+    public List<Usuario> getAllUsers() {
         return repositorioUsuario.findAll();
     }
 
@@ -50,7 +59,6 @@ public class UserController {
      * Path: /api/usuario/add
      *
      * @param usuario JSON com os dados do novo usuario.
-     * @see Usuario#Usuario(String, String, String, String, String, Long)
      */
     @PostMapping(path = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Usuario> addUser(@RequestBody Usuario usuario) {
@@ -91,6 +99,21 @@ public class UserController {
      */
     @DeleteMapping("/remover/{id}")
     public ResponseEntity<Long> deleteUserById(@PathVariable Long id) {
+
+        List<PlantaDoUsuario> plantas = repositorioPlantaDoUsuario.findAll();
+        for (PlantaDoUsuario planta : plantas) {
+            if (planta.getUsuario().getId() == id) {
+                repositorioPlantaDoUsuario.delete(planta);
+            }
+        }
+
+        List<ListaFavoritos> listaFavoritos = repositorioListaFavoritos.findAll();
+        for (ListaFavoritos lista : listaFavoritos) {
+            if (lista.getId_usuario() == id) {
+                repositorioListaFavoritos.delete(lista);
+            }
+        }
+
         repositorioUsuario.deleteById(id);
 
         return ResponseEntity.ok(id);

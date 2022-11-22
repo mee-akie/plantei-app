@@ -8,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -25,7 +24,7 @@ public class PlantaController {
      * @return JSON com todas as plantas cadastradas no banco de dados.
      */
     @GetMapping("/listar")
-    public List<Planta> getAllPlants(HttpServletRequest request) {
+    public List<Planta> getAllPlants() {
         return repositorioPlanta.findAll();
     }
 
@@ -73,6 +72,15 @@ public class PlantaController {
                 .orElseThrow(() -> new ResourceNotFoundException("Planta com id '" + id + "' nao foi encontrado"));
 
         plantaAlterada.setNome(dadosPlanta.getNome());
+        plantaAlterada.setBeneficio(dadosPlanta.getBeneficio());
+        plantaAlterada.setArea_recomendada(dadosPlanta.getArea_recomendada());
+        plantaAlterada.setRegiao_ideal(dadosPlanta.getRegiao_ideal());
+        plantaAlterada.setIluminacao_ideal(dadosPlanta.getIluminacao_ideal());
+        plantaAlterada.setQtd_agua(dadosPlanta.getQtd_agua());
+        plantaAlterada.setFreq_regar(dadosPlanta.getFreq_regar());
+        plantaAlterada.setTempo_colheita(dadosPlanta.getTempo_colheita());
+        plantaAlterada.setFreq_adubagem(dadosPlanta.getFreq_adubagem());
+        plantaAlterada.setModo_de_plantar(dadosPlanta.getModo_de_plantar());
 
         repositorioPlanta.save(plantaAlterada);
 

@@ -1,13 +1,26 @@
 version: '3.8'
 services:
 
+  frontend:
+    hostname: frontend
+    image: plantei-frontend:1.0
+    container_name: plantei-frontend
+    cap_drop: ["ALL"]
+    build:
+      context: plantei-frontend
+      dockerfile: Dockerfile
+    networks:
+      - front
+    ports:
+      - 3000:3000
+
   database:
     hostname: database
     container_name: plantei_database
     image: plantei_database:1.0
     build:
-      context: docker
-      dockerfile: Dockerfile.postgres
+      context: database
+      dockerfile: Dockerfile
     stop_signal: SIGINT
 
     deploy:
@@ -33,6 +46,9 @@ services:
       - POSTGRES_PASSWORD_FILE=${POSTGRES_PASSWORD_FILE:?err}
       - LANG="pt_BR.UTF-8"
 
+    volumes:
+      - postgres_db:/var/lib/postgresql/data:rw
+
     secrets:
       - source: postgres_db
         target: postgres_db
@@ -46,11 +62,6 @@ services:
 
     networks: ["database"]
     expose: ["5432"]
-
-    volumes:
-      - postgres_db:/var/lib/postgresql/data:rw
-      - postgres_log:/var/log/postgresql:rw
-      - postgres_conf:/etc/postgresql:ro
 
     read_only: true
     tmpfs: ["/var/run/postgresql"]
@@ -67,7 +78,7 @@ services:
     image: plantei_backend:1.0
     build:
       context: .
-      dockerfile: docker/Dockerfile.plantei
+      dockerfile: plantei-backend/Dockerfile
     stop_signal: SIGINT
 
     deploy:
@@ -96,27 +107,16 @@ services:
       database:
         condition: service_healthy
 
-    #frontend:
-    #  profiles: ["deploy"]
-    #  hostname: frontend
-    #  container_name: plantei_frontend
-    #  image: plantei_backend:1.0
-    #  build:
-    #    context: .
-    #    dockerfile: docker/Dockerfile.front
-    #
-    #  networks: ["backend"]
-
 networks:
-  backend:
+  back:
+    name: plantei-backend
     driver: bridge
-  database:
+  front:
+    name: plantei-frontend
     driver: bridge
 
 volumes:
   postgres_db:
-  postgres_log:
-  postgres_conf: # Change to configs:
 
 secrets:
   postgres_db:
