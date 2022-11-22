@@ -18,13 +18,13 @@ utilizando suas plantações. Dessa forma, o aplicativo incentiva o usuário a t
 Subir a aplicação:
 
 ```sh
-docker-compose up -d
+docker-compose --profile deploy up -d
 ```
 
 Derrubar a aplicação:
 
 ```sh
-docker-compose down
+docker-compose --profile deploy down
 ```
 
 ## Build da aplicação

@@ -2,7 +2,7 @@
 
 start: build
 	@echo 'Starting containers...'
-	@docker-compose up
+	@COMPOSE_PROJECT_NAME=plantei docker-compose up
 
 stop:
 	@echo 'Stopping containers...'
