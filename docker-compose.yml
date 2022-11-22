@@ -9,6 +9,28 @@ services:
     build:
       context: plantei-frontend
       dockerfile: Dockerfile
+
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 200M
+#        reservations:
+#          memory: 10M
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+
+#    user: "nginx"
+    restart: always
+    cap_drop: [ "ALL" ]
+
+#    environment:
+#      - NODE_ENV=production
+#      - NODE_CONFIG_LOGLEVEL=debug
+#      - NPM_CONFIG_PREFIX=/home/getby/.npm-global
+
     networks: [ "front" ]
     ports: [ "3000:3000" ]
 
