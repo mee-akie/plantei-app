@@ -7,8 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PlanteiBackendApplication {
 
     public static void main(String[] args) {
-
-        //temporario
         SpringApplication.run(PlanteiBackendApplication.class, args);
     }
 
