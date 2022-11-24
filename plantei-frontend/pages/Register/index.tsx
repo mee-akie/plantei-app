@@ -5,7 +5,7 @@ import Input from "../../components/Input/index";
 import Button from "../../components/Button/index";
 import Main from "../../components/Main";
 
-import { Container, FormGroup, RegisterFooter, RegisterHeader, SubmitDiv } from "./style";
+import { Container, FormGroup, RegisterFooter, RegisterHeader, SubmitDiv } from "../../styles/Register";
 import Link from "next/link";
 
 type Inputs = {

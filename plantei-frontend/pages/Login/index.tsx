@@ -5,7 +5,7 @@ import Input from "../../components/Input/index";
 import Button from "../../components/Button/index";
 import Main from "../../components/Main";
 
-import { LoginFooter, LoginHeader, SubmitDiv } from "./style";
+import { LoginFooter, LoginHeader, SubmitDiv } from "../../styles/Login";
 import Link from "next/link";
 
 type Inputs = {

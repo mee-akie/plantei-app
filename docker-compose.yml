@@ -5,7 +5,6 @@ services:
     hostname: frontend
     image: plantei-frontend:1.0
     container_name: plantei-frontend
-    cap_drop: [ "ALL" ]
     build:
       context: plantei-frontend
       dockerfile: Dockerfile
@@ -24,7 +23,7 @@ services:
 
 #    user: "nginx"
     restart: always
-    cap_drop: [ "ALL" ]
+#    cap_drop: [ "ALL" ]
 
 #    environment:
 #      - NODE_ENV=production
@@ -32,7 +31,7 @@ services:
 #      - NPM_CONFIG_PREFIX=/home/getby/.npm-global
 
     networks: [ "front" ]
-    ports: [ "3000:3000" ]
+    ports: [ "80:80" ]
 
   database:
     hostname: database
