@@ -23,7 +23,7 @@ public class Usuario {
     @Column(nullable = true)
     private String area;
     @Column(nullable = true)
-    private Long iluminacao;
+    private String iluminacao;
 
     public Usuario() {
     }
@@ -56,7 +56,7 @@ public class Usuario {
         return area;
     }
 
-    public Long getIluminacao() {
+    public String getIluminacao() {
         return iluminacao;
     }
 
@@ -88,7 +88,7 @@ public class Usuario {
         this.area = area;
     }
 
-    public void setIluminacao(Long iluminacao) {
+    public void setIluminacao(String iluminacao) {
         this.iluminacao = iluminacao;
     }
 }
