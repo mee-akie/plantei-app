@@ -7,14 +7,75 @@
 - [GET] `/api/usuario/listar`
   - **Descricao:** Ira fornecer uma lista (JSON) contendo os dados de todos os usuarios existentes no banco de dados.
   - **Exemplo de uso:**
+  
+    ![image](https://user-images.githubusercontent.com/67126558/204162581-ea3bc16a-b85b-46f7-a816-753a2f4e7810.png)
+
+    - Resposta:
+      ```
+        [
+          {
+              "id": 1,
+              "email": "abigail@gg.com",
+              "nome": "Abigail",
+              "senha": "123",
+              "endereco": "rua augusta do faro",
+              "notificacoes": true,
+              "area": "PEQUENO",
+              "iluminacao": "5"
+          },
+          {
+              "id": 2,
+              "email": "roro@gg.com",
+              "nome": "Robert",
+              "senha": "123abc",
+              "endereco": "rua monte cristo",
+              "notificacoes": false,
+              "area": "MEDIO",
+              "iluminacao": "NULO"
+          }
+        ]
+      
+      ```
 
 - [GET] `/api/usuario/{id}`
   - **Descricao:** Ira fornecer os dados (JSON) do usuario com o ID fornecido no path da requisicao.
   - **Exemplo de uso:**
 
+    ![image](https://user-images.githubusercontent.com/67126558/204162677-ae885f94-b1d4-4781-8af5-3659f4b94edd.png)
+    
+    - Resposta:
+      ```
+       {
+          "id": 2,
+          "email": "roro@gg.com",
+          "nome": "Robert",
+          "senha": "123abc",
+          "endereco": "rua monte cristo",
+          "notificacoes": false,
+          "area": "MEDIO",
+          "iluminacao": "NULO"
+      }
+      ```
+
 - [POST] `/api/usuario/add`
   - **Descricao:** Ira adicionar um usuario novo, cujos dados sao enviados no body da requisicao.
   - **Exemplo de uso:**
+
+    ![image](https://user-images.githubusercontent.com/67126558/204162847-b9987cf4-a208-428d-9c5a-26635129478c.png)
+
+    - Resposta: [200 OK]
+      ```
+      {
+        "id": 11,
+        "email": "fakeUser01@gmail.com",
+        "nome": "FakeUser01",
+        "senha": "123",
+        "endereco": "rua sla",
+        "notificacoes": true,
+        "area": "GRANDE",
+        "iluminacao": "4"
+      }
+      ```
  
 - [PUT] `/api/usuario/alterarDados/{id}`
   - **Descricao:** Altera os dados de um usuario, cujo ID é aquele fornecido no path da requisicao.
@@ -23,7 +84,10 @@
 - [DELETE] `/api/usuario/remover/{id}`
   - **Descricao:** Remove do banco o usuario cujo ID é fornecido no path da requisição.
   - **Exemplo de uso:**
-
+    
+    ![image](https://user-images.githubusercontent.com/67126558/204162926-b981bc89-b87f-4c1d-9e04-023da70ebdf8.png)
+    
+    - Resposta: [200 OK]
 
 ### Dados da planta
 
