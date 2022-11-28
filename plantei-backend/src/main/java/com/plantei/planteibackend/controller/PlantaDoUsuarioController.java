@@ -69,7 +69,7 @@ public class PlantaDoUsuarioController {
 
         Long id_planta = plantaDoUsuario.getPlanta().getId();
         Planta planta = repositorioPlanta.findById(id_planta).orElseThrow(() -> new ResourceNotFoundException("Planta com id '" + id_planta+ "' nao foi encontrado"));
-        plantaDoUsuario.setPlanta(planta);
+        plantaDoUsuario.setNome_plantacao(planta);
 
         Long id_usuario = plantaDoUsuario.getUsuario().getId();
         Usuario usuario = repositorioUsuario.findById(id_usuario).orElseThrow(() -> new ResourceNotFoundException("Usuario com id '" + id_usuario + "' nao foi encontrado"));
@@ -85,13 +85,13 @@ public class PlantaDoUsuarioController {
         PlantaDoUsuario plantaAlterada = repositorioPlantaDoUsuario.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Planta do usuario com id '" + id + "' nao foi encontrado"));
 
-        plantaAlterada.setNome(dadosPlanta.getNome());
+        plantaAlterada.setNome(dadosPlanta.getNome_plantacao());
         plantaAlterada.setIdade_planta(dadosPlanta.getIdade_planta());
         plantaAlterada.setTempo_sem_regar(dadosPlanta.getTempo_sem_regar());
         plantaAlterada.setTipo_vaso(dadosPlanta.getTipo_vaso());
 
         Planta planta = repositorioPlanta.findById(dadosPlanta.getPlanta().getId()).orElseThrow(() -> new ResourceNotFoundException("Planta com id '" + id + "' nao foi encontrado"));
-        plantaAlterada.setPlanta(planta);
+        plantaAlterada.setNome_plantacao(planta);
 
         Usuario usuario = repositorioUsuario.findById(dadosPlanta.getUsuario().getId()).orElseThrow(() -> new ResourceNotFoundException("Usuario com id '" + id + "' nao foi encontrado"));
         plantaAlterada.setUsuario(usuario);

@@ -82,6 +82,7 @@ public class UserController {
 
         usuarioAlterado.setNome(dadosUsuario.getNome());
         usuarioAlterado.setEmail(dadosUsuario.getEmail());
+        usuarioAlterado.setSenha(dadosUsuario.getSenha());
         usuarioAlterado.setEndereco(dadosUsuario.getEndereco());
         usuarioAlterado.setNotificacoes(dadosUsuario.getNotificacoes());
         usuarioAlterado.setArea(dadosUsuario.getArea());

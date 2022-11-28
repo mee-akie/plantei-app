@@ -16,6 +16,10 @@ public class Comida {
     public Comida() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }

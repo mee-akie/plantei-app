@@ -15,7 +15,7 @@ public class PlantaDoUsuario {
     private Long id;
 
     @Column(nullable = false, length = 100)
-    private String nome;
+    private String nome_plantacao;
 
     @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -43,8 +43,8 @@ public class PlantaDoUsuario {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNome_plantacao() {
+        return nome_plantacao;
     }
 
     public Date getIdade_planta() {
@@ -71,8 +71,8 @@ public class PlantaDoUsuario {
         this.id = id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String nome_plantacao) {
+        this.nome_plantacao = nome_plantacao;
     }
 
     public void setIdade_planta(Date idade_planta) {
@@ -87,7 +87,7 @@ public class PlantaDoUsuario {
         this.tipo_vaso = tipo_vaso;
     }
 
-    public void setPlanta(Planta planta) {
+    public void setNome_plantacao(Planta planta) {
         this.planta = planta;
     }
 
