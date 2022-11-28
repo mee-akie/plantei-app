@@ -5,6 +5,10 @@ import javax.persistence.*;
 @Entity
 public class Comida {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Long id;
+
 	@Column(nullable = false)
 	private String nome;
 
@@ -13,6 +17,10 @@ public class Comida {
     private Planta planta;
 
     public Comida() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {

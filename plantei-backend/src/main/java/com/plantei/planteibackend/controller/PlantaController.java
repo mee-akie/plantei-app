@@ -1,8 +1,15 @@
 package com.plantei.planteibackend.controller;
 
 import com.plantei.planteibackend.exception.ResourceNotFoundException;
+import com.plantei.planteibackend.model.Comida;
+import com.plantei.planteibackend.model.ListaFavoritos;
 import com.plantei.planteibackend.model.Planta;
+import com.plantei.planteibackend.model.PlantaDoUsuario;
 import com.plantei.planteibackend.repository.RepositorioPlanta;
+import com.plantei.planteibackend.repository.RepositorioPlantaDoUsuario;
+import com.plantei.planteibackend.repository.RepositorioComida;
+import com.plantei.planteibackend.repository.RepositorioListaFavoritos;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +23,15 @@ public class PlantaController {
 
     @Autowired
     private RepositorioPlanta repositorioPlanta;
+
+    @Autowired
+    private RepositorioPlantaDoUsuario repositorioPlantaDoUsuario;
+
+    @Autowired
+    private RepositorioListaFavoritos repositorioListaFavoritos;
+
+    @Autowired
+    private RepositorioComida repositorioComida;
 
     /**
      * <p>Retorna uma lista com todas as plantas cadastradas no banco de dados.</p>
@@ -95,6 +111,27 @@ public class PlantaController {
      */
     @DeleteMapping("/remover/{id}")
     public ResponseEntity<Long> deletePlantById(@PathVariable Long id) {
+        List<PlantaDoUsuario> listaPlantasDoUsuarios = repositorioPlantaDoUsuario.findAll();
+        for (PlantaDoUsuario plantaDoUsuario : listaPlantasDoUsuarios) {
+            if (plantaDoUsuario.getPlanta().getId() == id) {
+                repositorioPlantaDoUsuario.delete(plantaDoUsuario);
+            }
+        }
+
+        List<ListaFavoritos> listaFavoritos = repositorioListaFavoritos.findAll();
+        for (ListaFavoritos lista : listaFavoritos) {
+            if (lista.getId_planta() == id) {
+                repositorioListaFavoritos.delete(lista);
+            }
+        }
+
+        List<Comida> listaComida = repositorioComida.findAll();
+        for (Comida comida : listaComida) {
+            if (comida.getPlanta().getId() == id) {
+                repositorioComida.delete(comida);
+            }
+        }
+
         repositorioPlanta.deleteById(id);
 
         return ResponseEntity.ok(id);
