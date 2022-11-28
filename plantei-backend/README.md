@@ -2,6 +2,8 @@
 
 ## End-points
 
+API disponível em [localhost:8080](localhost:8080)
+
 ### Dados do usuário
 
 - [GET] `/api/usuario/listar`
@@ -431,3 +433,40 @@
 
   
   - Resposta: [200 OK]
+
+### Dados das listas de favoritos
+
+- [GET] `/api/listaFavoritos/listar`
+  - **Descricao:** Ira fornecer uma lista (JSON) contendo os dados de todas as listas de favoritos de plantas
+    dos usuarios do banco de dados.
+  - **Exemplo de uso:**
+
+- [GET] `/api/listaFavoritos/{id}`
+  - **Descricao:** 
+  - **Exemplo de uso:**
+
+- [POST] `/api/listaFavoritos/add`
+  - **Descricao:** 
+  - **Exemplo de uso:**
+
+- [DELETE] `/api/listaFavoritos/remover`
+  - **Descricao:** 
+  - **Exemplo de uso:**
+
+### Dados das comidas
+
+- [GET] `/api/comida/listar/planta/{idPlanta}`
+  - **Descricao:**
+  - **Exemplo de uso:**
+
+- [GET] `/api/comida/listar/{nome}`
+  - **Descricao:** 
+  - **Exemplo de uso:**
+
+- [POST] `/api/comida/add`
+  - **Descricao:** 
+  - **Exemplo de uso:**
+
+- [DELETE] `/api/comida/remover/{nome}`
+  - **Descricao:** 
+  - **Exemplo de uso:**
