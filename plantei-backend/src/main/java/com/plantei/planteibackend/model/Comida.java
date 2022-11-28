@@ -4,9 +4,10 @@ import javax.persistence.*;
 
 @Entity
 public class Comida {
+
     @Id
-	@Column(nullable = false)
-	private String nome;
+    @Column(nullable = false)
+    private String nome;
 
     @ManyToOne(targetEntity = Planta.class)
     @JoinColumn(name = "id_planta")
@@ -22,7 +23,7 @@ public class Comida {
     public Planta getPlanta() {
         return planta;
     }
-    
+
     public void setNome(String nome) {
         this.nome = nome;
     }
