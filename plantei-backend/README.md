@@ -80,6 +80,22 @@
 - [PUT] `/api/usuario/alterarDados/{id}`
   - **Descricao:** Altera os dados de um usuario, cujo ID é aquele fornecido no path da requisicao.
   - **Exemplo de uso:**
+  
+    ![image](https://user-images.githubusercontent.com/67126558/204281034-0c0de788-5b11-417b-9b1c-d516e2e0fdc2.png)
+
+    - Resposta: [200 OK]
+      ```
+      {
+        "id": 1,
+        "email": "fakeUser06@gmail.com",
+        "nome": "FakeUser06",
+        "senha": "senhaaaaaaaaaa",
+        "endereco": "aaaaaa",
+        "notificacoes": false,
+        "area": "PEQUENO",
+        "iluminacao": "2"
+      }
+      ```
 
 - [DELETE] `/api/usuario/remover/{id}`
   - **Descricao:** Remove do banco o usuario cujo ID é fornecido no path da requisição.
@@ -94,23 +110,117 @@
 - [GET] `/api/planta/listar`
   - **Descricao:** Ira fornecer uma lista (JSON) contendo os dados de todas as plantas existentes no banco de dados.
   - **Exemplo de uso:**
+  
+    ![image](https://user-images.githubusercontent.com/67126558/204281603-d79cadf2-1559-4497-9013-adedf02a8001.png)
+
+    - Resposta:
+      ```
+      [
+        {
+            "id": 1,
+            "nome": "alecrim",
+            "beneficio": "vitamina x",
+            "area_recomendada": "MEDIO",
+            "regiao_ideal": "umido",
+            "iluminacao_ideal": 3,
+            "qtd_agua": 30,
+            "freq_regar": 2,
+            "tempo_colheita": 20,
+            "freq_adubagem": 3,
+            "modo_de_plantar": "plantar com cuidado"
+        },
+        {
+            "id": 2,
+            "nome": "gira-sol",
+            "beneficio": "vitamina f",
+            "area_recomendada": "PEQUENO",
+            "regiao_ideal": "arejado",
+            "iluminacao_ideal": 4,
+            "qtd_agua": 33,
+            "freq_regar": 1,
+            "tempo_colheita": 22,
+            "freq_adubagem": 5,
+            "modo_de_plantar": "plantar com cuidado"
+        }
+      ]
+      ```
 
 - [GET] `/api/planta/{id}`
   - **Descricao:** Ira fornecer os dados (JSON) da planta com o ID fornecido no path da requisicao.
   - **Exemplo de uso:**
+  
+    ![image](https://user-images.githubusercontent.com/67126558/204282037-ed1c9147-e88f-4e01-a2e4-9b21f0001259.png)
+   
+   - Resposta:
+      ```
+      {
+        "id": 2,
+        "nome": "gira-sol",
+        "beneficio": "vitamina f",
+        "area_recomendada": "PEQUENO",
+        "regiao_ideal": "arejado",
+        "iluminacao_ideal": 4,
+        "qtd_agua": 33,
+        "freq_regar": 1,
+        "tempo_colheita": 22,
+        "freq_adubagem": 5,
+        "modo_de_plantar": "plantar com cuidado"
+      }
+      ```
 
 - [POST] `/api/planta/add`
   - **Descricao:** Ira adicionar uma planta nova, cujos dados sao enviados no body da requisicao.
   - **Exemplo de uso:**
+ 
+    ![image](https://user-images.githubusercontent.com/67126558/204282895-1faf3b89-86d5-4b8f-9806-9b0470719fe4.png)
+
+   - Resposta: [200 OK]
+      ```
+      {
+        "id": 9,
+        "nome": "PlantaFake01",
+        "beneficio": "vitamina c",
+        "area_recomendada": "PEQUENO",
+        "regiao_ideal": "arejado",
+        "iluminacao_ideal": 4,
+        "qtd_agua": 33,
+        "freq_regar": 1,
+        "tempo_colheita": 22,
+        "freq_adubagem": 5,
+        "modo_de_plantar": "plantar com cuidado"
+      }
+      ```
 
 - [PUT] `/api/planta/alterarDados/{id}`
   - **Descricao:** Altera os dados de uma planta, cujo ID é aquele fornecido no path da requisicao.
   - **Exemplo de uso:**
 
+    ![image](https://user-images.githubusercontent.com/67126558/204283292-3a2dc1e4-e47d-4864-b7e7-ee82a5ac4048.png)
+
+   - Resposta: [200 OK]
+      ```
+      {
+        "id": 4,
+        "nome": "PlantaMudouNome",
+        "beneficio": "vitamina a",
+        "area_recomendada": "PEQUENO",
+        "regiao_ideal": "arejado",
+        "iluminacao_ideal": 4,
+        "qtd_agua": 33,
+        "freq_regar": 1,
+        "tempo_colheita": 22,
+        "freq_adubagem": 5,
+        "modo_de_plantar": "plantar com cuidado"
+      }
+      ```
+
 - [DELETE] `/api/planta/remover/{id}`
   - **Descricao:** Remove do banco a planta cujo ID é fornecido no path da requisição.
   - **Exemplo de uso:**
 
+    ![image](https://user-images.githubusercontent.com/67126558/204283737-4c445d83-8d14-453f-9968-12f654859783.png)
+
+    - Resposta: [200 OK]
 
 ### Dados da planta do usuario
 
