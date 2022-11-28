@@ -5,7 +5,7 @@ import Input from "../../components/Input/index";
 import Button from "../../components/Button/index";
 import Main from "../../components/Main";
 
-import { LoginFooter, SpanInfo, LoginHeader, SubmitDiv, ImageProfile } from "./style";
+import { LoginFooter, SpanInfo, LoginHeader, SubmitDiv, ImageProfile } from "../../styles/Profile";
 import ToggleSwitch from "../../components/ToggleSwitch";
 
 type Inputs = {

@@ -1,7 +1,7 @@
 import Image from "../../node_modules/next/image";
 import Main from "../../components/Main";
 
-import { ContainerLoading, PrincipalImage, StartImage, EndImage } from "./style";
+import { ContainerLoading, PrincipalImage, StartImage, EndImage } from "../../styles/LoadingScreen";
 
 
 export default function LoadingScreen() {
