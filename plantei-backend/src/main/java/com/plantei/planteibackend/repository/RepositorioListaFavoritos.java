@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
 @Repository
 public interface RepositorioListaFavoritos extends JpaRepository<ListaFavoritos, ListaFavoritosId> {
 	@Query(value = "SELECT id_planta FROM Lista_Favoritos where id_usuario = :id_usuario", nativeQuery = true)

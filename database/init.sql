@@ -26,7 +26,7 @@ create table Planta(
 
 create table planta_do_usuario (
 	id serial primary key,
-  nome_plantacao varchar(100) not null,
+	nome varchar(100) not null,
 	idade_planta date not null,
 	tempo_sem_regar timestamp not null,
 	tipo_vaso varchar(15) check(tipo_vaso in ('VASO_PLASTICO', 'GARRAFA_PET', 'VASO_CERAMICA', 'CANTEIRO')),
@@ -47,7 +47,7 @@ create table Comida(
 	id serial primary key,
 	nome varchar(50) not null,
 	id_planta int,
-  foreign key(id_planta) references planta(id)
+	foreign key(id_planta) references planta(id)
 );
 
 
@@ -82,34 +82,33 @@ insert into Planta (nome,beneficio, area_recomendada, regiao_ideal, iluminacao_i
 insert into Planta (nome,beneficio, area_recomendada, regiao_ideal, iluminacao_ideal, qtd_agua, freq_regar, tempo_colheita, freq_adubagem, modo_de_plantar) 
 			values ('salsinha','fonte de calcio', 'GRANDE', 'umido', 1, 20, 3, 40, 2, 'plantar com cuidado');
 
--- Tabela Planta_do_usuario
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2022-02-12', 'fazendinha', '2022-03-21 09:12:02', 'GARRAFA_PET', 1, 1);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2022-01-03', '', '2022-02-23 13:12:12', 'VASO_PLASTICO', 2, 5);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-10-12', 'lacos', '2022-03-22 09:43:02', 'CANTEIRO', 3, 4);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-10-02', 'happy', '2022-03-21 09:42:02', 'GARRAFA_PET', 4, 3);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2021-02-12', 'minha colheita', '2022-07-20 02:33:02', 'GARRAFA_PET', 5, 2);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2019-01-20', 'fazendinha', '2022-08-02 12:43:02', 'CANTEIRO', 6, 1);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-09-11', 'planta do bill', '2022-09-23 14:43:02', 'VASO_CERAMICA', 7, 10);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-03-12', 'vem que tem', '2022-10-21 22:34:02', 'CANTEIRO', 8, 9);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-04-01', '', '2022-06-03 18:11:02', 'VASO_CERAMICA', 3, 8);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-10-12', '', '2022-03-22 19:22:02', 'CANTEIRO', 2, 7);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-10-09', '', '2022-03-21 13:12:09', 'VASO_PLASTICO', 1, 6);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-08-12', '', '2022-04-12 23:23:23', 'VASO_CERAMICA', 4, 5);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-07-07', 'lacos', '2022-05-02 14:59:02', 'VASO_PLASTICO', 5, 4);
-insert into planta_do_usuario (idade_planta, nome_plantacao, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
+insert into planta_do_usuario (idade_planta, nome, tempo_sem_regar, tipo_vaso, id_planta, id_usuario) 
             values ('2020-10-12', 'happy', '2022-09-29 19:45:02', 'VASO_CERAMICA', 6, 3);
 
 -- Tabela Lista_favoritos

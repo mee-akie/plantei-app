@@ -3,7 +3,6 @@ package com.plantei.planteibackend.controller;
 import com.plantei.planteibackend.exception.ResourceNotFoundException;
 import com.plantei.planteibackend.model.ListaFavoritos;
 import com.plantei.planteibackend.model.ListaFavoritosId;
-import com.plantei.planteibackend.model.Planta;
 import com.plantei.planteibackend.repository.RepositorioListaFavoritos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,13 +20,6 @@ public class ListaFavoritosController {
     @GetMapping("/listar")
     public List<ListaFavoritos> getAllFavoriteList() {
         return repositorioListaFavoritos.findAll();
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<ListaFavoritos> getFavoriteListByid(@RequestBody ListaFavoritosId listaFavoritosId) throws ResourceNotFoundException {
-        ListaFavoritos dadosPlanta = repositorioListaFavoritos.findById(listaFavoritosId)
-                .orElseThrow(() -> new ResourceNotFoundException("Lista de favoritos com id '" + listaFavoritosId + "' nao foi encontrado"));
-        return ResponseEntity.ok().body(dadosPlanta);
     }
 
     @GetMapping("/listaUsuario/{id_usuario}")
