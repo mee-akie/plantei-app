@@ -1,6 +1,5 @@
 version: '3.8'
 services:
-
   frontend:
     hostname: frontend
     image: plantei-frontend:1.0
@@ -8,31 +7,8 @@ services:
     build:
       context: plantei-frontend
       dockerfile: Dockerfile
-
-#    deploy:
-#      resources:
-#        limits:
-#          memory: 200M
-#        reservations:
-#          memory: 10M
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#        window: 120s
-
-#    user: "nginx"
-    restart: always
-#    cap_drop: [ "ALL" ]
-
-#    environment:
-#      - NODE_ENV=production
-#      - NODE_CONFIG_LOGLEVEL=debug
-#      - NPM_CONFIG_PREFIX=/home/getby/.npm-global
-
     networks: [ "front" ]
     ports: [ "80:80" ]
-
   database:
     hostname: database
     container_name: plantei-database
@@ -41,20 +17,6 @@ services:
       context: database
       dockerfile: Dockerfile
     stop_signal: SIGINT
-
-    deploy:
-      resources:
-        limits:
-          memory: 200M
-          pids: 30
-        reservations:
-          memory: 50M
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-
     user: "postgres"
     restart: unless-stopped
     cap_drop: [ "ALL" ]
@@ -90,7 +52,6 @@ services:
        interval: 5s
        timeout: 5s
        retries: 5
-
   backend:
     hostname: backend
     container_name: plantei-backend
@@ -99,19 +60,6 @@ services:
       context: .
       dockerfile: plantei-backend/Dockerfile
     stop_signal: SIGINT
-
-    deploy:
-      resources:
-        limits:
-          memory: 1G
-          pids: 40
-        reservations:
-          memory: 500M
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
 
     restart: always
     cap_drop: [ "ALL" ]
