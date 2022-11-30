@@ -2,7 +2,7 @@
 
 FROM maven:3.8.6-jdk-11-slim AS builder
 WORKDIR /plantei
-COPY plantei-backend/pom.xml plantei-backend/plantei.xml .
+COPY plantei-backend/pom.xml plantei-backend/plantei.xml ./
 COPY plantei-backend/.mvn/ .mvn
 RUN ["mvn", "dependency:resolve"]
 COPY plantei-backend/src/ src
