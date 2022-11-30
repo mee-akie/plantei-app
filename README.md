@@ -63,7 +63,11 @@ Executar os seguintes comandos em sequencia:
 
 - `java PlanteiBackendApplication`
 
-A aplicação estará rodando em [http://localhost:8080](http://localhost:8080/).
+
+## Aplicação rodando localmente
+A aplicação front estará rodando em [http://localhost:80](http://localhost:80/).
+
+O back-end estará rodando em [http://localhost:8080](http://localhost:8080/).
 
 ## Ferramentas de desenvolvimento
 
