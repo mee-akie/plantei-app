@@ -43,7 +43,8 @@ erDiagram
 	}
 
 	Comida {
-		varchar nome PK
+		int id PK
+		varchar nome
 		int id_planta FK
 	}
 
