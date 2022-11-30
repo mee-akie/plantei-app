@@ -6,6 +6,10 @@ import javax.persistence.*;
 public class Comida {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Long id;
+		
     @Column(nullable = false)
     private String nome;
 

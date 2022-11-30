@@ -25,7 +25,7 @@ create table Planta(
 );
 
 create table planta_do_usuario (
-	id int not null generated always as identity,
+	id serial primary key,
 	nome varchar(100) not null,
 	idade_planta date not null,
 	tempo_sem_regar timestamp not null,
@@ -44,6 +44,7 @@ create table lista_favoritos(
 );
 
 create table Comida(
+	id serial primary key,
 	nome varchar(50) not null,
 	id_planta int,
 	foreign key(id_planta) references planta(id)
