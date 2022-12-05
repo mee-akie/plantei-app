@@ -27,7 +27,9 @@ Derrubar a aplicação:
 docker-compose --profile deploy down
 ```
 
-## Build da aplicação
+## Build da aplicação local
+
+Não precisa executar os passos seguintes caso opte por usar o Docker.
 
 ### 1. Criar o banco de dados no Postgresql
 
