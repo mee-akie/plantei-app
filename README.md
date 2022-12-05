@@ -32,13 +32,6 @@ docker-compose --profile deploy down
 ### 1. Criar o banco de dados no Postgresql
 
 - Requisitos: instalar o **Postgresql**.
-
-**1.1. Usuarios Linux**
-
-- Rode o script `configDBLinuxUsers`
-
-**1.2. Usuarios Windows**
-
 - Abra o shell do Postgresql (psql)
 - Execute em sequencia:
   - `CREATE USER planteiadmin WITH ENCRYPTED PASSWORD 'planteiAdmin';`
@@ -52,12 +45,12 @@ docker-compose --profile deploy down
 
 - Requisitos: instalar o [Maven](https://maven.apache.org/download.cgi).
 
-- Rode o comando `mvn clean install` em seu terminal dentro do diretório do projeto. Ele irá executar o
+- Rode o comando `mvn clean install` em seu terminal dentro do diretório `plantei-backend` do projeto. Ele irá executar o
   arquivo `pom.xml`.
 
 ### 3. Subir a aplicação localmente
 
-Executar os seguintes comandos em sequencia:
+Executar os seguintes comandos em sequencia dentro do diretório `plantei-backend/src/main/java/com/plantei/planteibackend` do projeto:
 
 - `javac PlanteiBackendApplication.java`
 
