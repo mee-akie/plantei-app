@@ -441,17 +441,70 @@ API disponível em [localhost:8080](localhost:8080)
     dos usuarios do banco de dados.
   - **Exemplo de uso:**
 
-- [GET] `/api/listaFavoritos/{id}`
+    ![image](https://user-images.githubusercontent.com/67126558/205681255-40973afe-9014-4aeb-81b0-d733a1d84c55.png)
+
+    - Resposta:
+    
+      ```
+      [
+          {
+              "id_usuario": 1,
+              "id_planta": 2
+          },
+          {
+              "id_usuario": 1,
+              "id_planta": 3
+          },
+          {
+              "id_usuario": 2,
+              "id_planta": 2
+          }
+      ]
+      ```
+      
+- [GET] `/api/listaFavoritos/listaUsuario/2`
   - **Descricao:** 
-  - **Exemplo de uso:**
+  - **Exemplo de uso:** 
+  
+    ![image](https://user-images.githubusercontent.com/67126558/205681565-0a3b2760-61c8-4534-85f1-a187a3fd97a6.png)
+
+    - Resposta:
+
+      ```
+        [
+          2,
+          3
+        ]
+       ```
 
 - [POST] `/api/listaFavoritos/add`
   - **Descricao:** 
   - **Exemplo de uso:**
 
+    ![image](https://user-images.githubusercontent.com/67126558/205682058-729771a7-aedf-431a-a6e6-c45cd77e4b6c.png)
+
+    - Resposta: [200 OK]
+      ```
+        {
+          "id_usuario": 1,
+          "id_planta": 2
+        }
+      ```
+
+
 - [DELETE] `/api/listaFavoritos/remover`
-  - **Descricao:** 
+  - **Descricao:** Remove do banco a lista de favoritos cujos dados são enviados pelo body da requisição.
   - **Exemplo de uso:**
+ 
+    ![image](https://user-images.githubusercontent.com/67126558/205682484-bbff8155-c639-49c2-aa83-e6de11709d15.png)
+
+    - Resposta: [200 OK]
+      ```
+        {
+          "id_usuario": 1,
+          "id_planta": 2
+        }
+      ```
 
 ### Dados das comidas
 
@@ -467,6 +520,7 @@ API disponível em [localhost:8080](localhost:8080)
   - **Descricao:** 
   - **Exemplo de uso:**
 
-- [DELETE] `/api/comida/remover/{nome}`
+- [DELETE] `/api/comida/remover`
   - **Descricao:** 
   - **Exemplo de uso:**
+
