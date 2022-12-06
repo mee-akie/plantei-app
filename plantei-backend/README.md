@@ -462,8 +462,8 @@ API disponível em [localhost:8080](localhost:8080)
       ]
       ```
       
-- [GET] `/api/listaFavoritos/listaUsuario/2`
-  - **Descricao:** 
+- [GET] `/api/listaFavoritos/listaUsuario/{id_usuario}`
+  - **Descricao:** Irá fornecer uma lista de todas as plantas favoritadas de um usuario. O id do usuário é dado no path da requisição.
   - **Exemplo de uso:** 
   
     ![image](https://user-images.githubusercontent.com/67126558/205681565-0a3b2760-61c8-4534-85f1-a187a3fd97a6.png)
@@ -493,7 +493,7 @@ API disponível em [localhost:8080](localhost:8080)
 
 
 - [DELETE] `/api/listaFavoritos/remover`
-  - **Descricao:** Remove do banco a lista de favoritos cujos dados são enviados pelo body da requisição.
+  - **Descricao:** Remove do banco uma planta favoritada por um usuario. Os dados do usuario e a planta são enviados pelo body da requisição.
   - **Exemplo de uso:**
  
     ![image](https://user-images.githubusercontent.com/67126558/205682484-bbff8155-c639-49c2-aa83-e6de11709d15.png)
@@ -509,18 +509,150 @@ API disponível em [localhost:8080](localhost:8080)
 ### Dados das comidas
 
 - [GET] `/api/comida/listar/planta/{idPlanta}`
-  - **Descricao:**
+  - **Descricao:** Irá retornar uma lista contendo os dados de comidas que podem ser feitas utilizando uma planta. O id da planta é fornecido no path da requisição.
+  - **Exemplo de uso:**
+  
+    ![image](https://user-images.githubusercontent.com/67126558/205777604-4638e7c0-7d46-4f4e-af06-9517ffaabe5e.png)
+
+    - Resposta:
+      ```
+        [
+            {
+                "id": 2,
+                "nome": "polenta",
+                "planta": {
+                    "id": 2,
+                    "nome": "gira-sol",
+                    "beneficio": "vitamina f",
+                    "area_recomendada": "PEQUENO",
+                    "regiao_ideal": "arejado",
+                    "iluminacao_ideal": 4,
+                    "qtd_agua": 33,
+                    "freq_regar": 1,
+                    "tempo_colheita": 22,
+                    "freq_adubagem": 5,
+                    "modo_de_plantar": "plantar com cuidado"
+                }
+            },
+            {
+                "id": 5,
+                "nome": "macarrao",
+                "planta": {
+                    "id": 2,
+                    "nome": "gira-sol",
+                    "beneficio": "vitamina f",
+                    "area_recomendada": "PEQUENO",
+                    "regiao_ideal": "arejado",
+                    "iluminacao_ideal": 4,
+                    "qtd_agua": 33,
+                    "freq_regar": 1,
+                    "tempo_colheita": 22,
+                    "freq_adubagem": 5,
+                    "modo_de_plantar": "plantar com cuidado"
+                }
+            }
+        ]
+      ```
+
+- [GET] `/api/comida/listar/{nome_da_comida}`
+  - **Descricao:** Irá retornar uma lista com os dados de comidas cujo nome é informado no path da requisicao.
   - **Exemplo de uso:**
 
-- [GET] `/api/comida/listar/{nome}`
-  - **Descricao:** 
-  - **Exemplo de uso:**
+    ![image](https://user-images.githubusercontent.com/67126558/205777986-be4a7137-b2fb-4495-a3a6-4211247e646f.png)
+
+    - Resposta:
+      ```
+      [
+          {
+              "id": 2,
+              "nome": "polenta",
+              "planta": {
+                  "id": 2,
+                  "nome": "gira-sol",
+                  "beneficio": "vitamina f",
+                  "area_recomendada": "PEQUENO",
+                  "regiao_ideal": "arejado",
+                  "iluminacao_ideal": 4,
+                  "qtd_agua": 33,
+                  "freq_regar": 1,
+                  "tempo_colheita": 22,
+                  "freq_adubagem": 5,
+                  "modo_de_plantar": "plantar com cuidado"
+              }
+          }
+      ]
+      ```
 
 - [POST] `/api/comida/add`
-  - **Descricao:** 
+  - **Descricao:** Irá adicionar uma nova comida. Os dados dela devem ser passado via body da requisição.
   - **Exemplo de uso:**
 
-- [DELETE] `/api/comida/remover`
-  - **Descricao:** 
+    ![image](https://user-images.githubusercontent.com/67126558/205783760-6d0e8695-d38b-4dab-bb87-37ad1a9d5430.png)
+
+    - Resposta: [200 OK]
+      ```
+      {
+          "id": 18,
+          "nome": "macarrao",
+          "planta": {
+              "id": 2,
+              "nome": "gira-sol",
+              "beneficio": "vitamina f",
+              "area_recomendada": "PEQUENO",
+              "regiao_ideal": "arejado",
+              "iluminacao_ideal": 4,
+              "qtd_agua": 33,
+              "freq_regar": 1,
+              "tempo_colheita": 22,
+              "freq_adubagem": 5,
+              "modo_de_plantar": "plantar com cuidado"
+          }
+      }      
+      ```
+
+
+- [DELETE] `/api/comida/remover/{nome_da_comida}`
+  - **Descricao:** Irá remover os dados de uma comida, cujo nome é dado no path da requisição.
   - **Exemplo de uso:**
 
+    ![image](https://user-images.githubusercontent.com/67126558/205782555-f8768df8-31b0-43dc-bb91-ca0e4f1309fb.png)
+
+    - Resposta: [200 OK]
+      ```
+      [
+          {
+              "id": 5,
+              "nome": "macarrao",
+              "planta": {
+                  "id": 2,
+                  "nome": "gira-sol",
+                  "beneficio": "vitamina f",
+                  "area_recomendada": "PEQUENO",
+                  "regiao_ideal": "arejado",
+                  "iluminacao_ideal": 4,
+                  "qtd_agua": 33,
+                  "freq_regar": 1,
+                  "tempo_colheita": 22,
+                  "freq_adubagem": 5,
+                  "modo_de_plantar": "plantar com cuidado"
+              }
+          },
+          {
+              "id": 6,
+              "nome": "macarrao",
+              "planta": {
+                  "id": 3,
+                  "nome": "hortela",
+                  "beneficio": "acalmante",
+                  "area_recomendada": "GRANDE",
+                  "regiao_ideal": "umido",
+                  "iluminacao_ideal": 1,
+                  "qtd_agua": 20,
+                  "freq_regar": 3,
+                  "tempo_colheita": 20,
+                  "freq_adubagem": 2,
+                  "modo_de_plantar": "plantar em lugar arejado"
+              }
+          }
+      ]   
+      ```
