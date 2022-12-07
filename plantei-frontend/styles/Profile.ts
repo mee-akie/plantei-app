@@ -23,10 +23,3 @@ export const SubmitDiv = styled.div`
   display: grid;
   justify-content: center;
 `;
-
-export const LoginFooter = styled.footer`
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-`;

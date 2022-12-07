@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import Image from "../../node_modules/next/image";
+import Image from "next/image";
 
 import Input from "../../components/Input/index";
 import Button from "../../components/Button/index";
@@ -7,6 +7,7 @@ import Main from "../../components/Main";
 
 import { LoginFooter, LoginHeader, SubmitDiv } from "../../styles/Login";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 type Inputs = {
   email: string,
@@ -22,7 +23,7 @@ export default function Login(props) {
   } = useForm<Inputs>();
   
   const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
-  
+  const router = useRouter();
   console.log(watch("email"), errors)
   
   return (
@@ -56,6 +57,7 @@ export default function Login(props) {
             width="min-content"
             color="#7B7878"
             padding="10px 35px"
+            onClick={() => router.push('/NovaPlanta')}
           >
             Entrar
           </Button>

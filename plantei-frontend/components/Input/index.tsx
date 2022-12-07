@@ -13,6 +13,7 @@ class InputProps {
   margin?: string;
   color?: string;
   backgroundColor?: string;
+  disabled?: boolean;
 }
 
 const InputStyled = styled.input<InputProps>`
@@ -44,6 +45,7 @@ export default function Input({
   margin,
   color,
   backgroundColor,
+  disabled,
 }: InputProps) {
   
   return (
@@ -58,6 +60,7 @@ export default function Input({
       margin={margin}
       color={color}
       backgroundColor={backgroundColor || 'transparent'}
+      disabled={disabled}
     />
   );
 }
