@@ -1,11 +1,11 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import Image from "../../node_modules/next/image";
 
 import Input from "../../components/Input/index";
-import Button from "../../components/Button/index";
+import BottomMenu from "../../components/BottomMenu/index";
 import Main from "../../components/Main";
 
-import { LoginFooter, SpanInfo, LoginHeader, SubmitDiv, ImageProfile } from "../../styles/Profile";
+
+import { SpanInfo, LoginHeader, SubmitDiv, ImageProfile } from "../../styles/Profile";
 import ToggleSwitch from "../../components/ToggleSwitch";
 
 type Inputs = {
@@ -36,7 +36,7 @@ export default function Profile(props) {
         <SpanInfo>Nome</SpanInfo>
         <Input
           {...register("nome", { required: true })}
-          placeholder="Nome completo"
+          placeholder="Jeni Martins"
           border="1px solid #9AC979"
           backgroundColor="#9AC979"
           color="#FFFFFF"
@@ -47,7 +47,7 @@ export default function Profile(props) {
         <SpanInfo>Localização</SpanInfo>
         <Input
           {...register("localizacao", { required: true })}
-          placeholder="Sua cidade"
+          placeholder="São Paulo"
           border="1px solid #9AC979"
           backgroundColor="#9AC979"
           color="#FFFFFF"
@@ -58,7 +58,7 @@ export default function Profile(props) {
         <SpanInfo>Espaço de plantio</SpanInfo>
         <Input
           {...register("espacoPlantio", { required: true })}
-          placeholder="Espaço do plantio selecionado"
+          placeholder="Espaço Médio"
           border="1px solid #9AC979"
           backgroundColor="#9AC979"
           color="#FFFFFF"
@@ -68,10 +68,10 @@ export default function Profile(props) {
 
         <ToggleSwitch>Desejo receber notificações para cuidados com a horta.</ToggleSwitch>
       </form>
-
-      <LoginFooter>
-        Menu
-      </LoginFooter>
+      
+      <BottomMenu
+        backgroundColor="#FFFFFF"
+      />
     </Main>
     );
   }

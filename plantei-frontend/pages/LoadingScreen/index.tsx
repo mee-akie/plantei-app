@@ -1,4 +1,4 @@
-import Image from "../../node_modules/next/image";
+import Image from "next/image";
 import Main from "../../components/Main";
 
 import { ContainerLoading, PrincipalImage, StartImage, EndImage } from "../../styles/LoadingScreen";
